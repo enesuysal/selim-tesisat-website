@@ -17,6 +17,9 @@ RUN npm run build
 # Expose port
 EXPOSE 3000
 
+# Install curl for healthchecks or scripts
+RUN apk add --no-cache curl
+
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
