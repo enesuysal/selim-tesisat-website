@@ -133,14 +133,14 @@ router.post('/', contactLimiter, contactValidation, async (req: import('express'
 
     await transporter.sendMail(autoReplyOptions);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.'
     });
 
   } catch (error) {
     console.error('Contact form error:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.'
     });
@@ -149,7 +149,7 @@ router.post('/', contactLimiter, contactValidation, async (req: import('express'
 
 // Get contact information
 router.get('/info', (req, res) => {
-  res.json({
+  return res.json({
     success: true,
     data: {
       phone: '+90 XXX XXX XX XX',

@@ -38,7 +38,6 @@ const sitemapUrls: SitemapUrl[] = [
 export const createSitemap = async (): Promise<string> => {
   const stream = new SitemapStream({ 
     hostname: 'https://selimtesisat.com',
-    cacheTime: 600000, // 10 minutes
     xmlns: {
       news: false,
       xhtml: false,
