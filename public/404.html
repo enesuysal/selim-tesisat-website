@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Sayfa Bulunamadı | Selim Sıhhi Tesisat</title>
+    <meta name="description" content="Aradığınız sayfa bulunamadı. Selim Sıhhi Tesisat ana sayfasına dönün veya hizmetlerimizi inceleyin.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notfound-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .notfound-logo img {
+            height: 60px;
+            width: auto;
+            display: inline-block;
+            vertical-align: middle;
+            border-radius: 50%;
+            background: white;
+            padding: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .error-container {
+            max-width: 800px;
+            text-align: center;
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+        }
+
+        .error-number {
+            font-size: 8rem;
+            font-weight: 700;
+            color: #0EA5E9;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            color: #4C1D95;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .water-emoji {
+            font-size: 3rem;
+            margin: 2rem 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8fafc;
+            color: #4C1D95;
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .btn-emergency {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-emergency:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .suggestions {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .suggestions h3 {
+            color: #4C1D95;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .suggestions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .suggestions li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .suggestions li::before {
+            content: '🔧';
+            font-size: 1.2rem;
+        }
+
+        .suggestions a {
+            color: #0EA5E9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .suggestions a:hover {
+            text-decoration: underline;
+        }
+
+        .popular-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .service-link {
+            padding: 1rem;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #4C1D95;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-link:hover {
+            border-color: #0EA5E9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer {
+            background: #4C1D95;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .error-number {
+                font-size: 5rem;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-container {
+                padding: 3rem 2rem;
+                margin: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .popular-services {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-in-out 0.2s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Interactive pipe animation */
+        .pipe-animation {
+            position: absolute;
+            top: 50px;
+            left: -50px;
+            width: 100px;
+            height: 4px;
+            background: #0EA5E9;
+            border-radius: 2px;
+            opacity: 0.3;
+            animation: flow 3s linear infinite;
+        }
+
+        .pipe-animation::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: -3px;
+            width: 10px;
+            height: 10px;
+            background: #0EA5E9;
+            border-radius: 50%;
+        }
+
+        @keyframes flow {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        .notfound-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .notfound-logo img {
+            height: 120px;
+            width: auto;
+            border-radius: 10px;
+            background: #fff;
+            border: 2px solid #0EA5E9;
+            box-shadow: 0 2px 10px 0 rgba(14,165,233,0.10);
+            padding: 4px 10px;
+            transition: box-shadow 0.2s, background 0.2s;
+        }
+
+        .notfound-logo img:hover {
+            background: #e0f2fe;
+            box-shadow: 0 6px 18px 0 rgba(14,165,233,0.18);
+        }
+    </style>
+</head>
+<body>
+    <div class="pipe-animation"></div>
+    
+    <header class="header">
+        <div class="nav-container">
+            <a href="/" class="notfound-logo">
+                <img src="/images/selim-logo.png" alt="Selim Tesisat Logo">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/hizmetler">Hizmetler</a></li>
+                    <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    <li><a href="/iletisim">İletişim</a></li>
+                </ul>
+                <button class="mobile-menu">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="error-container loading">
+            <img src="/images/pexels-bulat369-1243575272-32588548.jpg" alt="404 Not Found" style="width:120px;height:120px;object-fit:cover;border-radius:50%;margin-bottom:1rem;box-shadow:0 2px 10px rgba(14,165,233,0.10);">
+            <div class="error-number">404</div>
+            <h1 class="error-title">Sayfa Bulunamadı</h1>
+            <div class="water-emoji">💧</div>
+            <p class="error-message">
+                Üzgünüz, aradığınız sayfa mevcut değil. Sayfa taşınmış, silinmiş olabilir veya hatalı bir link kullanmış olabilirsiniz.
+                Ama endişelenmeyin! Tesisat sorunlarınız için doğru yerdesiniz.
+            </p>
+
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">
+                    🏠 Ana Sayfaya Dön
+                </a>
+                <a href="/hizmetler" class="btn btn-secondary">
+                    🔧 Hizmetlerimizi İncele
+                </a>
+                <a href="tel:+905551234567" class="btn btn-emergency">
+                    🚨 Acil Arama
+                </a>
+            </div>
+
+            <div class="suggestions">
+                <h3>Yaygın Sorunlar İçin Hızlı Çözümler</h3>
+                <ul>
+                    <li><a href="/hizmetler#su-kacagi">Su kaçağı problemi mi yaşıyorsunuz?</a></li>
+                    <li><a href="/hizmetler#tikaniklik">Lavabo veya klozet tıkanıklığı var mı?</a></li>
+                    <li><a href="/hizmetler#musluk">Musluk tamiri mi gerekiyor?</a></li>
+                    <li><a href="/hizmetler#kombi">Kombi bakımı zamanı geldi mi?</a></li>
+                    <li><a href="/iletisim">Genel danışmanlık için iletişime geçin</a></li>
+                </ul>
+            </div>
+
+            <div class="popular-services">
+                <a href="/hizmetler" class="service-link">
+                    <span class="service-icon">💧</span>
+                    <div>Su Kaçağı Tamiri</div>
+                </a>
+                <a href="/hizmetler" class="service-link">
+                    <span class="service-icon">🚿</span>
+                    <div>Tıkanıklık Açma</div>
+                </a>
+                <a href="/hizmetler" class="service-link">
+                    <span class="service-icon">🔧</span>
+                    <div>Musluk Tamiri</div>
+                </a>
+                <a href="/hizmetler" class="service-link">
+                    <span class="service-icon">🔥</span>
+                    <div>Kombi Bakımı</div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Selim Sıhhi Tesisat ve Tamirat. Tüm hakları saklıdır.</p>
+        <p>Kalite ile Tanışın... 💧</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu')?.addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu) {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            }
+        });
+
+        // Auto-redirect timer (optional)
+        let countdown = 10;
+        const redirectTimer = setInterval(() => {
+            countdown--;
+            if (countdown <= 0) {
+                clearInterval(redirectTimer);
+                // Uncomment the line below if you want auto-redirect
+                // window.location.href = '/';
+            }
+        }, 1000);
+
+        // Track 404 errors (for analytics)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_view', {
+                'page_title': '404 Error',
+                'page_location': window.location.href,
+                'custom_parameter': 'broken_link'
+            });
+        }
+
+        // Add interactive water drop animation on click
+        document.addEventListener('click', function(e) {
+            const drop = document.createElement('div');
+            drop.innerHTML = '💧';
+            drop.style.position = 'fixed';
+            drop.style.left = e.clientX + 'px';
+            drop.style.top = e.clientY + 'px';
+            drop.style.fontSize = '2rem';
+            drop.style.pointerEvents = 'none';
+            drop.style.zIndex = '9999';
+            drop.style.animation = 'dropFall 2s ease-out forwards';
+            
+            document.body.appendChild(drop);
+            
+            setTimeout(() => {
+                drop.remove();
+            }, 2000);
+        });
+
+        // Add CSS for drop animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes dropFall {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100px) rotate(180deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Easter egg: Konami code for emergency contact
+        let konamiCode = [];
+        const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.keyCode);
+            if (konamiCode.length > 10) {
+                konamiCode.shift();
+            }
+            
+            if (konamiCode.toString() === konami.toString()) {
+                alert('🚨 SÜPER ACİL MOD AKTİF! 🚨\nDoğrudan Usta Selim\'i arıyorsunuz...');
+                window.location.href = 'tel:+905551234567';
+            }
+        });
+
+        // Smooth scroll for hash links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading completion
+        window.addEventListener('load', () => {
+            document.querySelector('.loading').style.opacity = '1';
+        });
+    </script>
+
+    <!-- Structured Data for 404 Error -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "404 - Sayfa Bulunamadı",
+        "description": "Aradığınız sayfa bulunamadı. Selim Sıhhi Tesisat ana sayfasına dönün.",
+        "url": "https://selimtesisat.com/404",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Selim Sıhhi Tesisat",
+            "url": "https://selimtesisat.com"
+        },
+        "mainEntity": {
+            "@type": "LocalBusiness",
+            "name": "Selim Sıhhi Tesisat ve Tamirat",
+            "telephone": "+90 555 123 45 67",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "İzmir",
+                "addressCountry": "TR"
+            }
+        }
+    }
+    </script>
+</body>
+</html>

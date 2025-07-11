@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda | Selim Sıhhi Tesisat - 15 Yıllık Tecrübe</title>
+    <meta name="description" content="15 yıllık tecrübe ile İzmir'de sıhhi tesisat hizmetleri. Güvenilir, hızlı ve profesyonel çözümler. Müşteri memnuniyeti odaklı hizmet.">
+    <meta name="keywords" content="selim sıhhi tesisat hakkında, tecrübeli tesisatçı, istanbul tesisat ustası, güvenilir tesisat hizmeti">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Hakkımızda | Selim Sıhhi Tesisat - 15 Yıllık Tecrübe">
+    <meta property="og:description" content="15 yıllık tecrübe ile İzmir'de sıhhi tesisat hizmetleri. Güvenilir, hızlı ve profesyonel çözümler.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://selimtesisat.com/about">
+    <meta property="og:image" content="https://selimtesisat.com/images/about-og.jpg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0EA5E9;
+            font-size: 1.2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            color: #4C1D95;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.5rem;
+            color: #0EA5E9;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .about-card h2 {
+            color: #4C1D95;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .stats-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #0EA5E9;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #4C1D95;
+            font-weight: 600;
+        }
+
+        .values-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .value-item h3 {
+            color: #4C1D95;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .team-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .team-card {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .team-info h3 {
+            color: #4C1D95;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-title {
+            color: #0EA5E9;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .certifications {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-item {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-item {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .testimonial-item::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: #0EA5E9;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            padding-top: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #4C1D95;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            background: white;
+            color: #4C1D95;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .footer {
+            background: #4C1D95;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .team-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* About page specific styles */
+        .about-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .about-logo img {
+            height: 120px;
+            width: auto;
+            border-radius: 10px;
+            background: #fff;
+            border: 2px solid #0EA5E9;
+            box-shadow: 0 2px 10px 0 rgba(14,165,233,0.10);
+            padding: 4px 10px;
+            transition: box-shadow 0.2s, background 0.2s;
+        }
+
+        .about-logo img:hover {
+            background: #e0f2fe;
+            box-shadow: 0 6px 18px 0 rgba(14,165,233,0.18);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="/" class="about-logo">
+                <img src="/images/selim-logo.png" alt="Selim Tesisat Logo">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/hizmetler">Hizmetler</a></li>
+                    <li><a href="/hakkimizda" class="active">Hakkımızda</a></li>
+                    <li><a href="/iletisim">İletişim</a></li>
+                </ul>
+                <button class="mobile-menu">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-section">
+            <img src="/images/anton-savinov-lDwKKjlHL2Y-unsplash.jpg" alt="Hakkımızda Selim Tesisat" style="max-width: 320px; width: 100%; border-radius: 18px; margin-bottom: 2rem; box-shadow: 0 8px 32px rgba(14,165,233,0.10);">
+            <h1>Hakkımızda</h1>
+            <p class="subtitle">Kalite ile Tanışın...</p>
+            <p>15 yıllık tecrübemiz ile İzmir'de sıhhi tesisat alanında güvenilir, hızlı ve profesyonel hizmet sunuyoruz. Müşteri memnuniyeti bizim önceliğimizdir.</p>
+        </section>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h2>
+                    <div class="card-icon">🏆</div>
+                    Misyonumuz
+                </h2>
+                <img src="/images/team-evelo-XTstePKvIro-unsplash.jpg" alt="Tesisat Ekibi" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:1rem;">
+                <p>İzmir'de yaşayan her bireyin ve işletmenin sıhhi tesisat ihtiyaçlarını en kaliteli, hızlı ve uygun fiyatlı şekilde karşılamak. 7/24 hizmet anlayışımız ile acil durumlarınızda yanınızda olmak.</p>
+                <br>
+                <p>Modern teknikler ve kaliteli malzemeler kullanarak, uzun vadeli çözümler sunmayı hedefliyoruz.</p>
+            </div>
+
+            <div class="about-card">
+                <h2>
+                    <div class="card-icon">🎯</div>
+                    Vizyonumuz
+                </h2>
+                <img src="/images/pexels-kseniachernaya-5691536.jpg" alt="Vizyonumuz" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:1rem;">
+                <p>İzmir'in en güvenilir ve tercih edilen sıhhi tesisat firması olmak. Teknolojik yenilikleri takip ederek, çevre dostu ve sürdürülebilir çözümler sunmak.</p>
+                <br>
+                <p>Müşterilerimizin hayat kalitesini artırmak ve onlara huzur veren bir yaşam alanı oluşturmalarına destek olmak.</p>
+            </div>
+        </div>
+
+        <section class="stats-section">
+            <h2 style="text-align: center; color: #4C1D95; font-size: 2.5rem; margin-bottom: 1rem;">Rakamlarla Biz</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Yıllık Tecrübe</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Mutlu Müşteri</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Acil Servis</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">39</div>
+                    <div class="stat-label">İlçede Hizmet</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30</div>
+                    <div class="stat-label">Dakika Yanıt</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">%98</div>
+                    <div class="stat-label">Memnuniyet Oranı</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <h2 style="text-align: center; color: #4C1D95; font-size: 2.5rem; margin-bottom: 1rem;">Değerlerimiz</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <h3>🛡️ Güvenilirlik</h3>
+                    <p>15 yıllık tecrübemiz ve binlerce başarılı proje ile güveninizi kazandık. Sözümüzün arkasında duruyoruz.</p>
+                </div>
+                <div class="value-item">
+                    <h3>⚡ Hızlı Çözüm</h3>
+                    <p>Acil durumlarınızda 30 dakika içinde yanınızdayız. Hızlı teşhis ve etkili çözümler sunuyoruz.</p>
+                </div>
+                <div class="value-item">
+                    <h3>💎 Kalite</h3>
+                    <p>Sadece kaliteli malzemeler kullanıyoruz. İşçiliğimize ve hizmetimize verdiğimiz garantiler kalitemizin kanıtıdır.</p>
+                </div>
+                <div class="value-item">
+                    <h3>💰 Uygun Fiyat</h3>
+                    <p>Kaliteli hizmeti uygun fiyatlarla sunuyoruz. Şeffaf fiyatlandırma, gizli maliyet yok.</p>
+                </div>
+                <div class="value-item">
+                    <h3>🤝 Dürüstlük</h3>
+                    <p>Müşterilerimize her zaman dürüst ve şeffaf yaklaşırız. Gereksiz işlemler önermeyiz.</p>
+                </div>
+                <div class="value-item">
+                    <h3>🌱 Çevre Bilinci</h3>
+                    <p>Su tasarrufu sağlayan çözümler ve çevre dostu malzemeler kullanarak doğaya katkıda bulunuyoruz.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2 style="text-align: center; color: #4C1D95; font-size: 2.5rem; margin-bottom: 1rem;">Ekibimiz</h2>
+            <div class="team-card">
+                <img src="/images/plumber-228010_1920.jpg" alt="Selim Usta" class="team-avatar" style="width:120px;height:120px;object-fit:cover;border-radius:50%;margin-right:2rem;">
+                <div class="team-info">
+                    <h3>Selim Usta</h3>
+                    <div class="team-title">Kurucu & Baş Tesisat Ustası</div>
+                    <p>15 yıllık deneyime sahip Usta Selim, sıhhi tesisat alanında uzmanlaşmış ve binlerce başarılı projeye imza atmıştır. Müşteri memnuniyeti odaklı yaklaşımı ve teknik expertise'i ile takımımızın lideridir.</p>
+                    <br>
+                    <p><strong>Uzmanlık Alanları:</strong> Su kaçağı tespiti, tıkanıklık açma, musluk ve klozet montajı, şofben bakımı, kombi montajı, lavabo kurulumu</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="certifications">
+            <h2 style="text-align: center; color: #4C1D95; font-size: 2.5rem; margin-bottom: 1rem;">Sertifikalarımız & Yetkinliklerimiz</h2>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-icon">📜</div>
+                    <h3>Sıhhi Tesisat Ustalık Belgesi</h3>
+                    <p>Resmi ustalık sertifikası</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">🔧</div>
+                    <h3>Doğalgaz Tesisat Sertifikası</h3>
+                    <p>Doğalgaz tesisatı kurulum yetkinliği</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">⚡</div>
+                    <h3>İSG Sertifikası</h3>
+                    <p>İş Sağlığı ve Güvenliği sertifikası</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">🛡️</div>
+                    <h3>Sigorta Belgesi</h3>
+                    <p>Tam kapsamlı meslek sigortası</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">🌊</div>
+                    <h3>Su Kaçağı Tespit Uzmanlığı</h3>
+                    <p>Modern cihazlarla kaçak bulma</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon">🔥</div>
+                    <h3>Kombi Bakım Sertifikası</h3>
+                    <p>Tüm marka kombi bakım yetkinliği</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2 style="text-align: center; color: #4C1D95; font-size: 2.5rem; margin-bottom: 1rem;">Müşteri Yorumları</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-item">
+                    <img src="/images/pexels-bulat369-1243575272-32588548.jpg" alt="Müşteri Yorumu" style="width:60px;height:60px;object-fit:cover;border-radius:50%;margin-bottom:1rem;">
+                    <p class="testimonial-text">Gece yarısı su kaçağı problemim olduğunda hemen geldi. Çok profesyonel ve güler yüzlü. Kesinlikle tavsiye ederim.</p>
+                    <div class="testimonial-author">- Ayşe Hanım, Kadıköy</div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="/images/pexels-bulat369-1243575272-32588548.jpg" alt="Müşteri Yorumu" style="width:60px;height:60px;object-fit:cover;border-radius:50%;margin-bottom:1rem;">
+                    <p class="testimonial-text">Yıllardır çözemediğimiz tıkanıklık problemini 30 dakikada çözdü. Fiyatı da çok uygun. Teşekkürler Selim Usta.</p>
+                    <div class="testimonial-author">- Mehmet Bey, Beşiktaş</div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="/images/pexels-bulat369-1243575272-32588548.jpg" alt="Müşteri Yorumu" style="width:60px;height:60px;object-fit:cover;border-radius:50%;margin-bottom:1rem;">
+                    <p class="testimonial-text">Banyomun komple renovasyonunu yaptı. Hem hızlı hem kaliteli. İşinden memnun kalan nadir ustalardan.</p>
+                    <div class="testimonial-author">- Fatma Hanım, Şişli</div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="/images/pexels-bulat369-1243575272-32588548.jpg" alt="Müşteri Yorumu" style="width:60px;height:60px;object-fit:cover;border-radius:50%;margin-bottom:1rem;">
+                    <p class="testimonial-text">Kombi bakımını her yıl kendisine yaptırıyorum. Çok titiz ve detaycı çalışıyor. Güvenilir bir usta.</p>
+                    <div class="testimonial-author">- Ali Bey, Üsküdar</div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="/images/pexels-bulat369-1243575272-32588548.jpg" alt="Müşteri Yorumu" style="width:60px;height:60px;object-fit:cover;border-radius:50%;margin-bottom:1rem;">
+                    <p class="testimonial-text">Ofisimizde acil su kaçağı vardı. Hemen gelip sorunu çözdü. İş yerimizi selden kurtardı desem yeridir.</p>
+                    <div class="testimonial-author">- Zeynep Hanım, Maslak</div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="/images/pexels-bulat369-1243575272-32588548.jpg" alt="Müşteri Yorumu" style="width:60px;height:60px;object-fit:cover;border-radius:50%;margin-bottom:1rem;">
+                    <p class="testimonial-text">Çok dürüst bir usta. Gereksiz işlem yapmıyor, sadece gerekeni yapıyor. Bu zamanda nadir bulunan bir özellik.</p>
+                    <div class="testimonial-author">- Hasan Bey, Bakırköy</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Bizimle Çalışmaya Hazır mısınız?</h2>
+            <p>15 yıllık tecrübemizi sizin hizmetinize sunmak için buradayız. Hemen iletişime geçin!</p>
+            <div class="cta-buttons">
+                <a href="/iletisim" class="cta-btn">📞 Hemen Ara</a>
+                <a href="/hizmetler" class="cta-btn">🔧 Hizmetlerimizi İncele</a>
+                <a href="mailto:info@selimtesisat.com" class="cta-btn">📧 E-posta Gönder</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Selim Sıhhi Tesisat ve Tamirat. Tüm hakları saklıdır.</p>
+        <p>Kalite ile Tanışın... 💧</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                let current = 0;
+                const increment = target.includes('+') ? parseInt(target) / 100 : 
+                                target.includes('%') ? parseInt(target) / 100 : 
+                                target.includes('/') ? 1 : parseInt(target) / 100;
+                
+                const timer = setInterval(() => {
+                    if (target.includes('+')) {
+                        current += increment;
+                        if (current >= parseInt(target)) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + '+';
+                        }
+                    } else if (target.includes('%')) {
+                        current += increment;
+                        if (current >= parseInt(target)) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + '%';
+                        }
+                    } else if (target.includes('/')) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        current += increment;
+                        if (current >= parseInt(target)) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current);
+                        }
+                    }
+                }, 50);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            animateCounters();
+        });
+    </script>
+</body>
+</html>
