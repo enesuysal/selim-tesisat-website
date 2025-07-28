@@ -8,7 +8,6 @@ import dotenv from 'dotenv';
 import { createSitemap } from './utils/sitemap';
 import { contactRouter } from './routes/contact';
 import { dataRouter } from './routes/data';
-import { adminRouter } from './routes/admin';
 import { seoMiddleware } from './middleware/seo';
 import { connectDB } from './config/database';
 import { Service, ContactInfo, HeroContent, WhyChoose, CTA, SiteInfo, AboutPage, ContactPage, ServicesPage, SeoPage, Portfolio, PortfolioPage, Gallery, GalleryPage } from './models';
@@ -60,7 +59,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Routes
 app.use('/api/contact', contactRouter);
 app.use('/api/data', dataRouter);
-app.use('/api/admin', adminRouter);
 
 // Sitemap
 app.get('/sitemap.xml', async (req, res) => {

@@ -12,7 +12,6 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const sitemap_1 = require("./utils/sitemap");
 const contact_1 = require("./routes/contact");
 const data_1 = require("./routes/data");
-const admin_1 = require("./routes/admin");
 const database_1 = require("./config/database");
 const models_1 = require("./models");
 dotenv_1.default.config();
@@ -44,7 +43,6 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.static(path_1.default.join(__dirname, '../public')));
 app.use('/api/contact', contact_1.contactRouter);
 app.use('/api/data', data_1.dataRouter);
-app.use('/api/admin', admin_1.adminRouter);
 app.get('/sitemap.xml', async (req, res) => {
     try {
         const sitemap = await (0, sitemap_1.createSitemap)();
@@ -154,9 +152,7 @@ app.get('/iletisim', async (req, res) => {
         res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
     }
 });
-app.get('/admin', (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, '../public/admin.html'));
-});
+
 app.use((req, res) => {
     res.status(404).sendFile(path_1.default.join(__dirname, '../public/404.html'));
 });

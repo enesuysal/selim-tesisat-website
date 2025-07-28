@@ -208,6 +208,17 @@
             display: block;
         }
 
+        .service-icon .emoji-icon {
+            font-size: 3rem;
+            line-height: 1;
+            display: block;
+        }
+
+        .service-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+
         .service-header h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
@@ -527,7 +538,11 @@
                         <% if (service.category === 'urgent') { %>
                             <div class="urgent-tag">ACİL</div>
                         <% } %>
-                        <span class="service-icon"><%= service.icon || '🔧' %></span>
+                        <% if (service.icon && service.icon.startsWith('icon-')) { %>
+                            <span class="service-icon"><i class="<%= service.icon %>"></i></span>
+                        <% } else { %>
+                            <span class="service-icon emoji-icon"><%= service.icon || '🔧' %></span>
+                        <% } %>
                         <h3><%= service.title %></h3>
                         <div class="service-price"><%= service.price %></div>
                     </div>
