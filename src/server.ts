@@ -108,7 +108,15 @@ app.get('/', async (req, res) => {
     });
   } catch (error) {
     console.error('Error loading homepage:', error);
-    res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    try {
+      const [contactInfo, siteInfo] = await Promise.all([
+        ContactInfo.findOne(),
+        SiteInfo.findOne()
+      ]);
+      res.status(500).render('error', { contactInfo, siteInfo });
+    } catch (renderError) {
+      res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    }
   }
 });
 
@@ -136,7 +144,15 @@ app.get('/hizmetler', async (req, res) => {
     });
   } catch (error) {
     console.error('Error loading services page:', error);
-    res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    try {
+      const [contactInfo, siteInfo] = await Promise.all([
+        ContactInfo.findOne(),
+        SiteInfo.findOne()
+      ]);
+      res.status(500).render('error', { contactInfo, siteInfo });
+    } catch (renderError) {
+      res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    }
   }
 });
 
@@ -159,7 +175,15 @@ app.get('/galeri', async (req, res) => {
     });
   } catch (error) {
     console.error('Error loading gallery page:', error);
-    res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    try {
+      const [contactInfo, siteInfo] = await Promise.all([
+        ContactInfo.findOne(),
+        SiteInfo.findOne()
+      ]);
+      res.status(500).render('error', { contactInfo, siteInfo });
+    } catch (renderError) {
+      res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    }
   }
 });
 
@@ -182,7 +206,15 @@ app.get('/referanslar', async (req, res) => {
     });
   } catch (error) {
     console.error('Error loading portfolio page:', error);
-    res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    try {
+      const [contactInfo, siteInfo] = await Promise.all([
+        ContactInfo.findOne(),
+        SiteInfo.findOne()
+      ]);
+      res.status(500).render('error', { contactInfo, siteInfo });
+    } catch (renderError) {
+      res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    }
   }
 });
 
@@ -201,7 +233,15 @@ app.get('/hakkimizda', async (req, res) => {
     });
   } catch (error) {
     console.error('Error loading about page:', error);
-    res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    try {
+      const [contactInfo, siteInfo] = await Promise.all([
+        ContactInfo.findOne(),
+        SiteInfo.findOne()
+      ]);
+      res.status(500).render('error', { contactInfo, siteInfo });
+    } catch (renderError) {
+      res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    }
   }
 });
 
@@ -222,7 +262,15 @@ app.get('/iletisim', async (req, res) => {
     });
   } catch (error) {
     console.error('Error loading contact page:', error);
-    res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    try {
+      const [contactInfo, siteInfo] = await Promise.all([
+        ContactInfo.findOne(),
+        SiteInfo.findOne()
+      ]);
+      res.status(500).render('error', { contactInfo, siteInfo });
+    } catch (renderError) {
+      res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    }
   }
 });
 
@@ -231,14 +279,32 @@ app.get('/admin', (req, res) => {
 });
 
 // 404 handler
-app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, '../public/404.html'));
+app.use(async (req, res) => {
+  try {
+    const [contactInfo, siteInfo] = await Promise.all([
+      ContactInfo.findOne(),
+      SiteInfo.findOne()
+    ]);
+    res.status(404).render('404', { contactInfo, siteInfo });
+  } catch (error) {
+    console.error('Error rendering 404 page:', error);
+    res.status(404).sendFile(path.join(__dirname, '../public/404.html'));
+  }
 });
 
 // Error handler
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use(async (err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   console.error(err.stack);
-  res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+  try {
+    const [contactInfo, siteInfo] = await Promise.all([
+      ContactInfo.findOne(),
+      SiteInfo.findOne()
+    ]);
+    res.status(500).render('error', { contactInfo, siteInfo });
+  } catch (renderError) {
+    console.error('Error rendering error page:', renderError);
+    res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+  }
 });
 
 app.listen(PORT, () => {
