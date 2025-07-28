@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= aboutPage?.heroTitle || 'Hakkımızda' %> - <%= siteInfo?.siteName || 'Selim Sıhhi Tesisat ve Tamirat' %></title>
+    <meta name="description" content="<%= aboutPage?.heroDescription || 'Selim Sıhhi Tesisat ve Tamirat hakkında bilgiler. 15 yıllık tecrübemiz ile İzmir\'de güvenilir tesisatçı hizmetleri.' %>">
+    <meta name="keywords" content="hakkımızda, selim tesisat, güvenilir tesisatçı, deneyimli tesisatçı, izmir tesisatçı">
+    <meta name="author" content="<%= siteInfo?.siteName || 'Selim Sıhhi Tesisat ve Tamirat' %>">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="<%= aboutPage?.heroTitle || 'Hakkımızda' %> - <%= siteInfo?.siteName || 'Selim Tesisat' %>">
+    <meta property="og:description" content="<%= aboutPage?.heroDescription || 'Selim Sıhhi Tesisat ve Tamirat hakkında bilgiler.' %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://selimtesisat.com/hakkimizda">
+    <meta property="og:image" content="<%= siteInfo?.logo || '/images/selim-logo.png' %>">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= aboutPage?.heroTitle || 'Hakkımızda' %> - <%= siteInfo?.siteName || 'Selim Tesisat' %>">
+    <meta name="twitter:description" content="<%= aboutPage?.heroDescription || 'Güvenilir tesisatçı hizmetleri' %>">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://selimtesisat.com/hakkimizda">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .about-hero .subtitle {
+            font-size: 1.5rem;
+            color: #3498db;
+            margin-bottom: 30px;
+        }
+        
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            padding: 80px 0;
+        }
+        
+        .about-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .about-card h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+        
+        .about-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .about-card p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .stats-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #3498db;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .values-section {
+            padding: 80px 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .value-item h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .testimonials-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .cta-section {
+            background: #2c3e50;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                padding: 40px 0;
+            }
+            
+            .about-card {
+                padding: 30px 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="<%= siteInfo?.logo || '/images/selim-logo.png' %>" alt="<%= siteInfo?.siteName || 'Selim Sıhhi Tesisat' %> Logo" class="logo">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Ana Sayfa</a></li>
+                    <li><a href="/hizmetler" class="nav-link">Hizmetler</a></li>
+                    <li><a href="/hakkimizda" class="nav-link active">Hakkımızda</a></li>
+                    <li><a href="/referanslar" class="nav-link">Referanslar</a></li>
+                    <li><a href="/galeri" class="nav-link">Galeri</a></li>
+                    <li><a href="/iletisim" class="nav-link">İletişim</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1><%= aboutPage?.heroTitle || 'Hakkımızda' %></h1>
+            <% if (aboutPage?.heroSubtitle) { %>
+            <p class="subtitle"><%= aboutPage.heroSubtitle %></p>
+            <% } %>
+            <p><%= aboutPage?.heroDescription || '15 yıllık tecrübemiz ile İzmir\'de sıhhi tesisat alanında güvenilir, hızlı ve profesyonel hizmet sunuyoruz. Müşteri memnuniyeti bizim önceliğimizdir.' %></p>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <main class="container">
+        <div class="about-grid">
+            <div class="about-card">
+                <h2>
+                    <div class="card-icon">🏆</div>
+                    <%= aboutPage?.missionTitle || 'Misyonumuz' %>
+                </h2>
+                <img src="<%= aboutPage?.missionImage || '/images/team-evelo-XTstePKvIro-unsplash.jpg' %>" alt="<%= aboutPage?.missionTitle || 'Misyonumuz' %>" loading="lazy">
+                <p><%= aboutPage?.missionDescription || 'İzmir\'de yaşayan her bireyin ve işletmenin sıhhi tesisat ihtiyaçlarını en kaliteli, hızlı ve uygun fiyatlı şekilde karşılamak. 7/24 hizmet anlayışımız ile acil durumlarınızda yanınızda olmak.' %></p>
+            </div>
+
+            <div class="about-card">
+                <h2>
+                    <div class="card-icon">🎯</div>
+                    <%= aboutPage?.visionTitle || 'Vizyonumuz' %>
+                </h2>
+                <img src="<%= aboutPage?.visionImage || '/images/pexels-kseniachernaya-5691536.jpg' %>" alt="<%= aboutPage?.visionTitle || 'Vizyonumuz' %>" loading="lazy">
+                <p><%= aboutPage?.visionDescription || 'İzmir\'in en güvenilir ve tercih edilen sıhhi tesisat firması olmak. Teknolojik yenilikleri takip ederek, çevre dostu ve sürdürülebilir çözümler sunmak.' %></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Stats Section -->
+    <% if (aboutPage?.stats && aboutPage.stats.length > 0) { %>
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><%= aboutPage.statsTitle || 'Rakamlarla Biz' %></h2>
+            </div>
+            <div class="stats-grid">
+                <% aboutPage.stats.forEach(stat => { %>
+                <div class="stat-item">
+                    <span class="stat-number"><%= stat.number %></span>
+                    <span class="stat-label"><%= stat.label %></span>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
+    <% } %>
+
+    <!-- Values Section -->
+    <% if (aboutPage?.values && aboutPage.values.length > 0) { %>
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><%= aboutPage.valuesTitle || 'Değerlerimiz' %></h2>
+            </div>
+            <div class="values-grid">
+                <% aboutPage.values.forEach(value => { %>
+                <div class="value-item">
+                    <div class="value-icon"><%= value.icon %></div>
+                    <h3><%= value.title %></h3>
+                    <p><%= value.description %></p>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
+    <% } %>
+
+    <!-- Testimonials -->
+    <% if (aboutPage?.testimonials && aboutPage.testimonials.length > 0) { %>
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><%= aboutPage.testimonialsTitle || 'Müşteri Yorumları' %></h2>
+            </div>
+            <div class="testimonials-grid">
+                <% aboutPage.testimonials.forEach(testimonial => { %>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"<%= testimonial.text %>"</p>
+                    <p class="testimonial-author"><%= testimonial.author %></p>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
+    <% } %>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2><%= aboutPage?.ctaTitle || 'Bizimle Çalışmaya Hazır mısınız?' %></h2>
+            <p><%= aboutPage?.ctaDescription || '15 yıllık tecrübemizi sizin hizmetinize sunmak için buradayız. Hemen iletişime geçin!' %></p>
+            <div class="cta-buttons">
+                <% if (aboutPage?.ctaButtons && aboutPage.ctaButtons.length > 0) { %>
+                    <% aboutPage.ctaButtons.forEach(button => { %>
+                    <a href="<%= button.link %>" class="btn btn-primary">
+                        <% if (button.icon) { %><%= button.icon %><% } %>
+                        <%= button.text %>
+                    </a>
+                    <% }); %>
+                <% } else { %>
+                <a href="<%= contactInfo?.phone ? `tel:${contactInfo.phone}` : 'tel:+90XXXXXXXXX' %>" class="btn btn-primary">
+                    📞 Hemen Ara
+                </a>
+                <a href="/hizmetler" class="btn btn-secondary">
+                    🔧 Hizmetlerimizi İncele
+                </a>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="<%= siteInfo?.logo || '/images/selim-logo.png' %>" alt="<%= siteInfo?.siteName || 'Selim' %> Logo" class="footer-logo">
+                        <h3><%= siteInfo?.siteName || 'Selim Tesisat' %></h3>
+                    </div>
+                    <p><%= siteInfo?.description || 'İzmir\'de profesyonel tesisatçı hizmetleri veren güvenilir firma. Kaliteli işçilik ve müşteri memnuniyeti önceliğimiz.' %></p>
+                </div>
+                <div class="footer-section">
+                    <h4>İletişim</h4>
+                    <ul class="contact-info">
+                        <% if (contactInfo?.phone) { %>
+                        <li>
+                            <i class="icon-phone"></i>
+                            <a href="tel:<%= contactInfo.phone %>"><%= contactInfo.phone %></a>
+                        </li>
+                        <% } %>
+                        <% if (contactInfo?.email) { %>
+                        <li>
+                            <i class="icon-mail"></i>
+                            <a href="mailto:<%= contactInfo.email %>"><%= contactInfo.email %></a>
+                        </li>
+                        <% } %>
+                        <% if (contactInfo?.address) { %>
+                        <li>
+                            <i class="icon-location"></i>
+                            <span><%= contactInfo.address %></span>
+                        </li>
+                        <% } else { %>
+                        <li>
+                            <i class="icon-location"></i>
+                            <span>İzmir, Türkiye</span>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><%= siteInfo?.footerText || '© 2025 Selim Sıhhi Tesisat ve Tamirat. Tüm hakları saklıdır.' %></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

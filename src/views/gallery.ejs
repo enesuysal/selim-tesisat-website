@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= galleryPage?.seoTitle || 'Galeri | Selim Sıhhi Tesisat' %></title>
+    <meta name="description" content="<%= galleryPage?.seoDescription || 'Tamamladığımız projelerin fotoğrafları, işçiliğimizin kalitesi ve müşteri memnuniyetinin görsel kanıtları.' %>">
+    <meta name="keywords" content="<%= galleryPage?.seoKeywords || 'galeri, proje fotoğrafları, tesisat işleri, önce sonra, işçilik kalitesi' %>">
+    <meta name="author" content="Selim Sıhhi Tesisat ve Tamirat">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="/images/selim-logo.png" alt="Selim Sıhhi Tesisat Logo" class="logo">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Ana Sayfa</a></li>
+                    <li><a href="/hizmetler" class="nav-link">Hizmetler</a></li>
+                    <li><a href="/hakkimizda" class="nav-link">Hakkımızda</a></li>
+                    <li><a href="/referanslar" class="nav-link">Referanslar</a></li>
+                    <li><a href="/galeri" class="nav-link active">Galeri</a></li>
+                    <li><a href="/iletisim" class="nav-link">İletişim</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Kaliteli İşçiliğimizin 
+                    <span class="highlight">Görsel Kanıtları</span>
+                </h1>
+                <p class="hero-description">Tamamladığımız projelerin fotoğrafları ve işçiliğimizin kalitesi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proje Fotoğrafları</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Tümü</button>
+                    <button class="filter-btn" data-filter="su-kacagi">Su Kaçağı</button>
+                    <button class="filter-btn" data-filter="tikaniklik">Tıkanıklık</button>
+                    <button class="filter-btn" data-filter="kombi">Kombi</button>
+                    <button class="filter-btn" data-filter="tadilat">Tadilat</button>
+                </div>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Örnek static content -->
+                <div class="gallery-item" data-category="su-kacagi">
+                    <div class="gallery-image">
+                        <img src="/images/gallery-placeholder.jpg" alt="Su Kaçağı Tamiri" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Su Kaçağı Tamiri</h3>
+                                <p>Karşıyaka, İzmir</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

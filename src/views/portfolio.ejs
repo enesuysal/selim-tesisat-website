@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= portfolioPage?.seoTitle || 'Referans İşlerimiz | Selim Sıhhi Tesisat' %></title>
+    <meta name="description" content="<%= portfolioPage?.seoDescription || 'Başarıyla tamamladığımız tesisat projeleri ve müşteri referansları. Kaliteli işçiliğimizin örneklerini inceleyin.' %>">
+    <meta name="keywords" content="<%= portfolioPage?.seoKeywords || 'referans işler, tesisat projeleri, müşteri yorumları, başarılı projeler' %>">
+    <meta name="author" content="Selim Sıhhi Tesisat ve Tamirat">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="<%= portfolioPage?.seoTitle || 'Referans İşlerimiz | Selim Sıhhi Tesisat' %>">
+    <meta property="og:description" content="<%= portfolioPage?.seoDescription || 'Başarıyla tamamladığımız tesisat projeleri ve müşteri referansları.' %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://selimtesisat.com/referanslar">
+    <meta property="og:image" content="/images/selim-logo.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= portfolioPage?.seoTitle || 'Referans İşlerimiz' %>">
+    <meta name="twitter:description" content="<%= portfolioPage?.seoDescription || 'Başarıyla tamamladığımız tesisat projeleri' %>">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://selimtesisat.com/referanslar">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "<%= portfolioPage?.pageTitle || 'Referans İşlerimiz' %>",
+      "description": "<%= portfolioPage?.pageDescription || 'Başarıyla tamamladığımız projeler ve memnun müşterilerimizin yorumları' %>",
+      "url": "https://selimtesisat.com/referanslar",
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "Selim Sıhhi Tesisat ve Tamirat",
+        "description": "İzmir'de profesyonel tesisatçı hizmetleri"
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="<%= siteInfo?.logo || '/images/selim-logo.png' %>" alt="<%= siteInfo?.siteName || 'Selim Sıhhi Tesisat' %> Logo" class="logo">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Ana Sayfa</a></li>
+                    <li><a href="/hizmetler" class="nav-link">Hizmetler</a></li>
+                    <li><a href="/hakkimizda" class="nav-link">Hakkımızda</a></li>
+                    <li><a href="/referanslar" class="nav-link active">Referanslar</a></li>
+                    <li><a href="/galeri" class="nav-link">Galeri</a></li>
+                    <li><a href="/iletisim" class="nav-link">İletişim</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <%= portfolioPage?.heroTitle || 'Kaliteli İşçiliğimizin Kanıtı' %>
+                    <span class="highlight"><%= portfolioPage?.heroSubtitle || 'Referans İşlerimiz' %></span>
+                </h1>
+                <p class="hero-description">
+                    <%= portfolioPage?.heroDescription || 'Yılların tecrübesi ve kaliteli malzeme kullanımıyla tamamladığımız başarılı projelerimizi inceleyin.' %>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Categories -->
+    <section class="portfolio-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proje Kategorileri</h2>
+            </div>
+            <div class="categories-grid">
+                <% if (portfolioPage && portfolioPage.categories && portfolioPage.categories.length > 0) { %>
+                    <% portfolioPage.categories.forEach(category => { %>
+                    <div class="category-card" data-category="<%= category.slug %>">
+                        <div class="category-icon">
+                            <i class="<%= category.icon %>"></i>
+                        </div>
+                        <h3><%= category.name %></h3>
+                        <p><%= category.description %></p>
+                    </div>
+                    <% }); %>
+                <% } else { %>
+                <!-- Fallback static content -->
+                <div class="category-card" data-category="su-kacagi">
+                    <div class="category-icon">
+                        <i class="icon-drop"></i>
+                    </div>
+                    <h3>Su Kaçağı Tamiri</h3>
+                    <p>Su kaçağı tespit ve tamir projelerimiz</p>
+                </div>
+                <div class="category-card" data-category="tikaniklik">
+                    <div class="category-icon">
+                        <i class="icon-wrench"></i>
+                    </div>
+                    <h3>Tıkanıklık Açma</h3>
+                    <p>Gider ve tıkanıklık açma işlerimiz</p>
+                </div>
+                <div class="category-card" data-category="kombi">
+                    <div class="category-icon">
+                        <i class="icon-fire"></i>
+                    </div>
+                    <h3>Kombi Tamiri</h3>
+                    <p>Kombi bakım ve tamir projelerimiz</p>
+                </div>
+                <div class="category-card" data-category="tadilat">
+                    <div class="category-icon">
+                        <i class="icon-home"></i>
+                    </div>
+                    <h3>Banyo Mutfak Tadilat</h3>
+                    <p>Tadilat ve yenileme projelerimiz</p>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-grid">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tamamlanan Projeler</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Tümü</button>
+                    <button class="filter-btn" data-filter="su-kacagi">Su Kaçağı</button>
+                    <button class="filter-btn" data-filter="tikaniklik">Tıkanıklık</button>
+                    <button class="filter-btn" data-filter="kombi">Kombi</button>
+                    <button class="filter-btn" data-filter="tadilat">Tadilat</button>
+                </div>
+            </div>
+            
+            <div class="projects-grid">
+                <% if (portfolio && portfolio.length > 0) { %>
+                    <% portfolio.forEach(project => { %>
+                        <% if (project && project.title) { %>
+                        <div class="project-card" data-category="<%= project.category %>">
+                            <div class="project-image">
+                                <% if (project.images && project.images.length > 0) { %>
+                                    <% const primaryImage = project.images.find(img => img.isPrimary) || project.images[0]; %>
+                                    <img src="<%= primaryImage.url %>" alt="<%= primaryImage.alt %>" loading="lazy">
+                                <% } else { %>
+                                    <img src="/images/portfolio-placeholder.jpg" alt="<%= project.title %>" loading="lazy">
+                                <% } %>
+                                <div class="project-overlay">
+                                    <div class="project-info">
+                                        <h3><%= project.title %></h3>
+                                        <p><%= project.location %></p>
+                                        <span class="project-date"><%= new Date(project.completionDate).toLocaleDateString('tr-TR') %></span>
+                                    </div>
+                                    <button class="view-project-btn" data-project-id="<%= project._id %>">
+                                        Detayları Gör
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3><%= project.title %></h3>
+                                <p><%= project.description.substring(0, 100) %>...</p>
+                                <div class="project-meta">
+                                    <span class="project-location">
+                                        <i class="icon-location"></i>
+                                        <%= project.location %>
+                                    </span>
+                                    <span class="project-duration">
+                                        <i class="icon-clock"></i>
+                                        <%= project.projectDuration || 'Belirtilmemiş' %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }); %>
+                <% } else { %>
+                <!-- Fallback static content -->
+                <div class="project-card" data-category="su-kacagi">
+                    <div class="project-image">
+                        <img src="/images/portfolio-placeholder.jpg" alt="Su Kaçağı Tamiri Projesi" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3>Su Kaçağı Tamiri</h3>
+                                <p>Karşıyaka, İzmir</p>
+                                <span class="project-date">15.07.2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Duvar İçi Su Kaçağı Tamiri</h3>
+                        <p>Modern cihazlarla tespit edilen duvar içi su kaçağının başarıyla tamiri...</p>
+                        <div class="project-meta">
+                            <span class="project-location">
+                                <i class="icon-location"></i>
+                                Karşıyaka, İzmir
+                            </span>
+                            <span class="project-duration">
+                                <i class="icon-clock"></i>
+                                1 gün
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2><%= portfolioPage?.ctaTitle || 'Projeniz İçin Teklif Alın' %></h2>
+                <p><%= portfolioPage?.ctaDescription || 'Sizin de projenizi başarıyla tamamlayalım. Ücretsiz keşif için bizi arayın.' %></p>
+                <div class="cta-buttons">
+                    <a href="tel:<%= contactInfo?.phone || '+90XXXXXXXXX' %>" class="btn btn-primary">
+                        <i class="icon-phone"></i>
+                        <%= portfolioPage?.ctaButtonText || 'Ücretsiz Keşif' %>
+                    </a>
+                    <a href="/iletisim" class="btn btn-outline">
+                        İletişim Formu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="<%= siteInfo?.logoUrl || '/images/selim-logo.png' %>" alt="<%= siteInfo?.siteName || 'Selim' %> Logo" class="footer-logo">
+                        <h3><%= siteInfo?.siteName || 'Selim Tesisat' %></h3>
+                    </div>
+                    <p><%= siteInfo?.description || 'İzmir\'de profesyonel tesisatçı hizmetleri veren güvenilir firma. Kaliteli işçilik ve müşteri memnuniyeti önceliğimiz.' %></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Hizmetlerimiz</h4>
+                    <ul>
+                        <% if (services && services.length > 0) { %>
+                            <% services.slice(0, 4).forEach(service => { %>
+                                <% if (service && service.title) { %>
+                                    <li><a href="/hizmetler#<%= service.slug || service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') %>"><%= service.title %></a></li>
+                                <% } %>
+                            <% }); %>
+                        <% } else { %>
+                            <li><a href="/hizmetler#su-kacagi">Su Kaçağı Tamiri</a></li>
+                            <li><a href="/hizmetler#tikaniklik">Tıkanıklık Açma</a></li>
+                            <li><a href="/hizmetler#kombi">Kombi Tamiri</a></li>
+                            <li><a href="/hizmetler#tadilat">Banyo Mutfak Tadilat</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>İletişim</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="icon-phone"></i>
+                            <a href="tel:<%= contactInfo?.phone || '+90XXXXXXXXX' %>"><%= contactInfo?.phone || '+90 XXX XXX XX XX' %></a>
+                        </li>
+                        <li>
+                            <i class="icon-mail"></i>
+                            <a href="mailto:<%= contactInfo?.email || 'info@selimtesisat.com' %>"><%= contactInfo?.email || 'info@selimtesisat.com' %></a>
+                        </li>
+                        <li>
+                            <i class="icon-location"></i>
+                            <span><%= contactInfo?.address || 'İzmir, Türkiye' %></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 <%= siteInfo?.siteName || 'Selim Sıhhi Tesisat ve Tamirat' %>. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script>
+        // Portfolio filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            const categoryCards = document.querySelectorAll('.category-card');
+
+            // Filter button functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            card.classList.add('fade-in');
+                        } else {
+                            card.style.display = 'none';
+                            card.classList.remove('fade-in');
+                        }
+                    });
+                });
+            });
+
+            // Category card click functionality
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    const filterBtn = document.querySelector(`[data-filter="${category}"]`);
+                    if (filterBtn) {
+                        filterBtn.click();
+                        // Scroll to projects section
+                        document.querySelector('.portfolio-grid').scrollIntoView({ 
+                            behavior: 'smooth' 
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

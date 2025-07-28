@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Selim Tesisat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        .header h1 {
+            margin-bottom: 10px;
+        }
+
+        .login-form {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: 100px auto;
+        }
+
+        .admin-panel {
+            display: none;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .btn-success {
+            background: #27ae60;
+        }
+
+        .btn-success:hover {
+            background: #229954;
+        }
+
+        .service-item {
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+
+        .service-item h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="login-form" class="login-form">
+        <h2>Admin Girişi</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Kullanıcı Adı:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Giriş Yap</button>
+        </form>
+        <div id="login-error" class="alert alert-error hidden"></div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="admin-panel" class="admin-panel">
+        <div class="container">
+            <div class="header">
+                <h1>Selim Tesisat Admin Paneli</h1>
+                <p>İçerik Yönetim Sistemi</p>
+                <button id="logout-btn" class="btn logout-btn">Çıkış Yap</button>
+            </div>
+
+            <div id="alerts"></div>
+
+            <!-- Site Bilgileri -->
+            <div class="section">
+                <h2>Site Bilgileri</h2>
+                <form id="site-info-form">
+                    <div class="form-group">
+                        <label for="siteName">Site Adı:</label>
+                        <input type="text" id="siteName" name="siteName">
+                    </div>
+                    <div class="form-group">
+                        <label for="tagline">Slogan:</label>
+                        <input type="text" id="tagline" name="tagline">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Açıklama:</label>
+                        <textarea id="description" name="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="footerText">Footer Metni:</label>
+                        <input type="text" id="footerText" name="footerText">
+                    </div>
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                </form>
+            </div>
+
+            <!-- Hero İçeriği -->
+            <div class="section">
+                <h2>Ana Sayfa Hero İçeriği</h2>
+                <form id="hero-form">
+                    <div class="form-group">
+                        <label for="heroTitle">Başlık:</label>
+                        <input type="text" id="heroTitle" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="heroSubtitle">Alt Başlık:</label>
+                        <input type="text" id="heroSubtitle" name="subtitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="heroDescription">Açıklama:</label>
+                        <textarea id="heroDescription" name="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="heroButtonText">Buton Metni:</label>
+                        <input type="text" id="heroButtonText" name="buttonText">
+                    </div>
+                    <div class="form-group">
+                        <label for="heroButtonLink">Buton Linki:</label>
+                        <input type="text" id="heroButtonLink" name="buttonLink">
+                    </div>
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                </form>
+            </div>
+
+            <!-- İletişim Bilgileri -->
+            <div class="section">
+                <h2>İletişim Bilgileri</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="phone">Telefon:</label>
+                        <input type="text" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta:</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adres:</label>
+                        <input type="text" id="address" name="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="workingHours">Çalışma Saatleri:</label>
+                        <input type="text" id="workingHours" name="workingHours">
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp:</label>
+                        <input type="text" id="whatsapp" name="whatsapp">
+                    </div>
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                </form>
+            </div>
+
+            <!-- CTA -->
+            <div class="section">
+                <h2>Çağrı Metni (CTA)</h2>
+                <form id="cta-form">
+                    <div class="form-group">
+                        <label for="ctaTitle">Başlık:</label>
+                        <input type="text" id="ctaTitle" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="ctaDescription">Açıklama:</label>
+                        <textarea id="ctaDescription" name="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="primaryButtonText">Ana Buton Metni:</label>
+                        <input type="text" id="primaryButtonText" name="primaryButtonText">
+                    </div>
+                    <div class="form-group">
+                        <label for="secondaryButtonText">İkinci Buton Metni:</label>
+                        <input type="text" id="secondaryButtonText" name="secondaryButtonText">
+                    </div>
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                </form>
+            </div>
+
+            <!-- About Page -->
+            <div class="section">
+                <h2>Hakkımızda Sayfası</h2>
+                <form id="about-form">
+                    <div class="form-group">
+                        <label for="aboutHeroTitle">Hero Başlık:</label>
+                        <input type="text" id="aboutHeroTitle" name="heroTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutHeroSubtitle">Hero Alt Başlık:</label>
+                        <input type="text" id="aboutHeroSubtitle" name="heroSubtitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutHeroDescription">Hero Açıklama:</label>
+                        <textarea id="aboutHeroDescription" name="heroDescription"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutMissionTitle">Misyon Başlık:</label>
+                        <input type="text" id="aboutMissionTitle" name="missionTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutMissionDescription">Misyon Açıklama:</label>
+                        <textarea id="aboutMissionDescription" name="missionDescription"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutVisionTitle">Vizyon Başlık:</label>
+                        <input type="text" id="aboutVisionTitle" name="visionTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutVisionDescription">Vizyon Açıklama:</label>
+                        <textarea id="aboutVisionDescription" name="visionDescription"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutCtaTitle">CTA Başlık:</label>
+                        <input type="text" id="aboutCtaTitle" name="ctaTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="aboutCtaDescription">CTA Açıklama:</label>
+                        <textarea id="aboutCtaDescription" name="ctaDescription"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let authToken = localStorage.getItem('authToken');
+
+        // Check if user is already logged in
+        if (authToken) {
+            showAdminPanel();
+        }
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    authToken = data.token;
+                    localStorage.setItem('authToken', authToken);
+                    showAdminPanel();
+                    loadContent();
+                } else {
+                    showError('login-error', data.message || 'Giriş başarısız');
+                }
+            } catch (error) {
+                showError('login-error', 'Bağlantı hatası');
+            }
+        });
+
+        // Logout handler
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            localStorage.removeItem('authToken');
+            authToken = null;
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('admin-panel').style.display = 'none';
+        });
+
+        function showAdminPanel() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('admin-panel').style.display = 'block';
+            loadContent();
+        }
+
+        async function loadContent() {
+            try {
+                const response = await fetch('/api/admin/content', {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`,
+                    },
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    populateForms(data);
+                } else {
+                    throw new Error('Content yüklenemedi');
+                }
+            } catch (error) {
+                showAlert('Content yüklenirken hata oluştu', 'error');
+            }
+        }
+
+        function populateForms(data) {
+            // Site Info
+            if (data.siteInfo) {
+                document.getElementById('siteName').value = data.siteInfo.siteName || '';
+                document.getElementById('tagline').value = data.siteInfo.tagline || '';
+                document.getElementById('description').value = data.siteInfo.description || '';
+                document.getElementById('footerText').value = data.siteInfo.footerText || '';
+            }
+
+            // Hero Content
+            if (data.heroContent) {
+                document.getElementById('heroTitle').value = data.heroContent.title || '';
+                document.getElementById('heroSubtitle').value = data.heroContent.subtitle || '';
+                document.getElementById('heroDescription').value = data.heroContent.description || '';
+                document.getElementById('heroButtonText').value = data.heroContent.buttonText || '';
+                document.getElementById('heroButtonLink').value = data.heroContent.buttonLink || '';
+            }
+
+            // Contact Info
+            if (data.contactInfo) {
+                document.getElementById('phone').value = data.contactInfo.phone || '';
+                document.getElementById('email').value = data.contactInfo.email || '';
+                document.getElementById('address').value = data.contactInfo.address || '';
+                document.getElementById('workingHours').value = data.contactInfo.workingHours || '';
+                document.getElementById('whatsapp').value = data.contactInfo.whatsapp || '';
+            }
+
+            // CTA
+            if (data.cta) {
+                document.getElementById('ctaTitle').value = data.cta.title || '';
+                document.getElementById('ctaDescription').value = data.cta.description || '';
+                document.getElementById('primaryButtonText').value = data.cta.primaryButtonText || '';
+                document.getElementById('secondaryButtonText').value = data.cta.secondaryButtonText || '';
+            }
+
+            // About Page
+            if (data.aboutPage) {
+                document.getElementById('aboutHeroTitle').value = data.aboutPage.heroTitle || '';
+                document.getElementById('aboutHeroSubtitle').value = data.aboutPage.heroSubtitle || '';
+                document.getElementById('aboutHeroDescription').value = data.aboutPage.heroDescription || '';
+                document.getElementById('aboutMissionTitle').value = data.aboutPage.missionTitle || '';
+                document.getElementById('aboutMissionDescription').value = data.aboutPage.missionDescription || '';
+                document.getElementById('aboutVisionTitle').value = data.aboutPage.visionTitle || '';
+                document.getElementById('aboutVisionDescription').value = data.aboutPage.visionDescription || '';
+                document.getElementById('aboutCtaTitle').value = data.aboutPage.ctaTitle || '';
+                document.getElementById('aboutCtaDescription').value = data.aboutPage.ctaDescription || '';
+            }
+        }
+
+        // Form handlers
+        document.getElementById('site-info-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            updateContent('/api/admin/site-info', new FormData(e.target));
+        });
+
+        document.getElementById('hero-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            updateContent('/api/admin/hero', new FormData(e.target));
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            updateContent('/api/admin/contact-info', new FormData(e.target));
+        });
+
+        document.getElementById('cta-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            updateContent('/api/admin/cta', new FormData(e.target));
+        });
+
+        document.getElementById('about-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            updateContent('/api/admin/about', new FormData(e.target));
+        });
+
+        async function updateContent(url, formData) {
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${authToken}`,
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (response.ok) {
+                    showAlert('İçerik başarıyla güncellendi!', 'success');
+                } else {
+                    throw new Error('Güncelleme başarısız');
+                }
+            } catch (error) {
+                showAlert('Güncelleme sırasında hata oluştu', 'error');
+            }
+        }
+
+        function showAlert(message, type) {
+            const alerts = document.getElementById('alerts');
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.textContent = message;
+            alerts.appendChild(alertDiv);
+
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        }
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+
+            setTimeout(() => {
+                errorElement.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

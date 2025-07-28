@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= seoPage?.title || 'Hizmetlerimiz | Selim Sıhhi Tesisat - İzmir Tesisatçı' %></title>
+    <meta name="description" content="<%= seoPage?.metaDescription || 'Kapsamlı sıhhi tesisat hizmetleri: Su kaçağı tamiri, tıkanıklık açma, musluk ve klozet montajı, şofben bakımı, lavabo kurulumu. Profesyonel çözümler.' %>">
+    <meta name="keywords" content="<%= seoPage?.metaKeywords || 'tesisat hizmetleri, su kaçağı tamiri, tıkanıklık açma, musluk montajı, klozet kurulumu, şofben bakımı, lavabo montajı' %>">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="<%= seoPage?.ogTitle || 'Hizmetlerimiz | Selim Sıhhi Tesisat - İzmir Tesisatçı' %>">
+    <meta property="og:description" content="<%= seoPage?.ogDescription || 'Kapsamlı sıhhi tesisat hizmetleri: Su kaçağı tamiri, tıkanıklık açma, musluk ve klozet montajı, şofben bakımı.' %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= seoPage?.canonicalUrl || 'https://selimtesisat.com/services' %>">
+    <meta property="og:image" content="<%= seoPage?.ogImage || 'https://selimtesisat.com/images/services-og.jpg' %>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .services-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .services-logo img {
+            height: 120px;
+            width: auto;
+            border-radius: 10px;
+            background: #fff;
+            border: 2px solid #0EA5E9;
+            box-shadow: 0 2px 10px 0 rgba(14,165,233,0.10);
+            padding: 4px 10px;
+            transition: box-shadow 0.2s, background 0.2s;
+        }
+
+        .services-logo img:hover {
+            background: #e0f2fe;
+            box-shadow: 0 6px 18px 0 rgba(14,165,233,0.18);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            color: #4C1D95;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.5rem;
+            color: #0EA5E9;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .emergency-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .emergency-contact:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .service-header {
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-price {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: #0EA5E9;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .service-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .service-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+        }
+
+        .urgent-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #dc2626;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .process-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .coverage-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .coverage-item {
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .coverage-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+        }
+
+        .pricing-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #0EA5E9 0%, #4C1D95 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: #0EA5E9;
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0EA5E9;
+            margin: 1rem 0;
+        }
+
+        .pricing-card.featured .price-amount {
+            color: white;
+        }
+
+        .warranty-section {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .warranty-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .warranty-item {
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .warranty-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer {
+            background: #4C1D95;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .emergency-contact {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .coverage-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-logo img {
+                height: 28px;
+                padding: 2px 5px;
+                border-radius: 6px;
+                background: #fff;
+                box-shadow: 0 1px 4px rgba(14,165,233,0.15);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="/" class="services-logo">
+                <img src="<%= siteInfo?.logo || '/images/selim-logo.png' %>" alt="<%= siteInfo?.companyName || 'Selim Tesisat' %> Logo">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/hizmetler" class="active">Hizmetler</a></li>
+                    <li><a href="/hakkimizda">Hakkımızda</a></li>
+                    <li><a href="/referanslar">Referanslar</a></li>
+                    <li><a href="/galeri">Galeri</a></li>
+                    <li><a href="/iletisim">İletişim</a></li>
+                </ul>
+                <button class="mobile-menu">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-section">
+            <h1><%= servicesPage?.heroTitle || 'Hizmetlerimiz' %></h1>
+            <p class="subtitle"><%= servicesPage?.heroSubtitle || 'Profesyonel Sıhhi Tesisat Çözümleri' %></p>
+            <p><%= servicesPage?.heroDescription || 'İzmir\'de 15 yıllık tecrübemiz ile kaliteli ve güvenilir tesisat hizmetleri sunuyoruz. 7/24 acil servis ile yanınızdayız.' %></p>
+            <a href="tel:<%= contactInfo?.phone || '+905551234567' %>" class="emergency-contact">
+                <span><%= servicesPage?.emergencyText || '🚨 ACİL DURUM' %></span>
+                <span><%= contactInfo?.phone || '+90 555 123 45 67' %></span>
+            </a>
+        </section>
+
+        <div class="services-grid">
+            <% services?.forEach(service => { %>
+                <div class="service-card">
+                    <div class="service-header">
+                        <% if (service.category === 'urgent') { %>
+                            <div class="urgent-tag">ACİL</div>
+                        <% } %>
+                        <span class="service-icon"><%= service.icon || '🔧' %></span>
+                        <h3><%= service.title %></h3>
+                        <div class="service-price"><%= service.price %></div>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <% service.features?.forEach(feature => { %>
+                                <li><%= feature %></li>
+                            <% }) %>
+                        </ul>
+                        <a href="/iletisim" class="service-btn">
+                            <%= service.category === 'urgent' ? 'Hemen Ara' : 'Randevu Al' %>
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <section class="process-section">
+            <h2 style="text-align: center; color: #4C1D95; font-size: 2.5rem; margin-bottom: 1rem;"><%= servicesPage?.processTitle || 'Çalışma Sürecimiz' %></h2>
+            <div class="process-grid">
+                <% (servicesPage?.processSteps || [
+                    { number: 1, title: 'İletişim', description: 'Bizi arayın veya WhatsApp\'tan mesaj gönderin. Sorununuzu dinleyelim ve size en hızlı çözümü sunalım.' },
+                    { number: 2, title: 'Hızlı Geliş', description: '30 dakika içinde adresinize geliyoruz. Acil durumlar için daha hızlı müdahale ediyoruz.' },
+                    { number: 3, title: 'Teşhis', description: 'Problemi detaylı inceleyip size şeffaf fiyat teklifi sunuyoruz. Gizli maliyet yok!' },
+                    { number: 4, title: 'Çözüm', description: 'Kaliteli malzemelerle profesyonel çözüm uyguluyoruz. İşçiliğimize güveniyoruz.' },
+                    { number: 5, title: 'Garanti', description: 'İşimize 1 yıl garanti veriyoruz. Memnuniyetiniz bizim önceliğimiz.' }
+                ]).forEach(step => { %>
+                    <div class="process-step">
+                        <div class="step-number"><%= step.number %></div>
+                        <h3><%= step.title %></h3>
+                        <p><%= step.description %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+
+        <section class="coverage-section">
+            <h2 style="text-align: center; color: #4C1D95; font-size: 2.5rem; margin-bottom: 1rem;"><%= servicesPage?.coverageTitle || 'Hizmet Verdiğimiz Bölgeler' %></h2>
+            <p style="text-align: center; color: #64748b; margin-bottom: 2rem;"><%= servicesPage?.coverageDescription || 'İzmir\'in tüm ilçelerinde hizmet veriyoruz' %></p>
+            <div class="coverage-grid">
+                <% (servicesPage?.serviceAreas || [
+                    'Konak', 'Karşıyaka', 'Bornova', 'Buca', 'Bayraklı', 'Çiğli',
+                    'Gaziemir', 'Balçova', 'Narlıdere', 'Karabağlar', 'Menemen', 'Aliağa',
+                    'Foça', 'Güzelbahçe', 'Seferihisar', 'Urla', 'Torbalı', 'Kemalpaşa',
+                    'Menderes', 'Selçuk'
+                ]).forEach(area => { %>
+                    <div class="coverage-item"><%= area %></div>
+                <% }) %>
+            </div>
+        </section>
+
+        <section class="warranty-section">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;"><%= servicesPage?.warrantyTitle || 'Garantili Hizmet' %></h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;"><%= servicesPage?.warrantyDescription || 'İşçiliğimize güveniyoruz, size de güven veriyoruz' %></p>
+            
+            <div class="warranty-features">
+                <% (servicesPage?.warrantyFeatures || [
+                    { icon: '🛡️', title: '1 Yıl Garanti', description: 'Tüm işçiliğimize 1 yıl garanti veriyoruz' },
+                    { icon: '🔄', title: 'Ücretsiz Dönüş', description: 'Garanti kapsamında sorun olursa ücretsiz müdahale' },
+                    { icon: '💎', title: 'Kaliteli Malzeme', description: 'Sadece kaliteli ve garantili malzemeler kullanıyoruz' },
+                    { icon: '📞', title: '7/24 Destek', description: 'Her türlü soru ve sorunlarınız için bize 7/24 ulaşabilirsiniz' }
+                ]).forEach(feature => { %>
+                    <div class="warranty-item">
+                        <div class="warranty-icon"><%= feature.icon %></div>
+                        <h3><%= feature.title %></h3>
+                        <p><%= feature.description %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 <%= siteInfo?.companyName || 'Selim Sıhhi Tesisat' %> | <%= siteInfo?.location || 'İzmir Tesisatçı' %></p>
+        <p>İletişim: <a href="tel:<%= contactInfo?.phone || '+905551234567' %>" style="color: #0EA5E9;"><%= contactInfo?.phone || '+90 555 123 45 67' %></a> | Email: <a href="mailto:<%= contactInfo?.email || 'info@selimtesisat.com' %>" style="color: #0EA5E9;"><%= contactInfo?.email || 'info@selimtesisat.com' %></a></p>
+        <div>
+            <a href="/hizmetler" style="color: white; text-decoration: underline;">Tüm Hizmetlerimiz</a>
+        </div>
+    </footer>
+</body>
+</html>

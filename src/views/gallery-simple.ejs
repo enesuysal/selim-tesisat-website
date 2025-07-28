@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri | Selim Sıhhi Tesisat</title>
+    <meta name="description" content="Tamamladığımız projelerin fotoğrafları, işçiliğimizin kalitesi ve müşteri memnuniyetinin görsel kanıtları.">
+    <meta name="keywords" content="galeri, proje fotoğrafları, tesisat işleri, önce sonra, işçilik kalitesi">
+    <meta name="author" content="Selim Sıhhi Tesisat ve Tamirat">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="/images/selim-logo.png" alt="Selim Sıhhi Tesisat Logo" class="logo">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Ana Sayfa</a></li>
+                    <li><a href="/hizmetler" class="nav-link">Hizmetler</a></li>
+                    <li><a href="/hakkimizda" class="nav-link">Hakkımızda</a></li>
+                    <li><a href="/referanslar" class="nav-link">Referanslar</a></li>
+                    <li><a href="/galeri" class="nav-link active">Galeri</a></li>
+                    <li><a href="/iletisim" class="nav-link">İletişim</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Kaliteli İşçiliğimizin 
+                    <span class="highlight">Görsel Kanıtları</span>
+                </h1>
+                <p class="hero-description">Tamamladığımız projelerin fotoğrafları ve işçiliğimizin kalitesi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proje Fotoğrafları</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Tümü</button>
+                    <button class="filter-btn" data-filter="su-kacagi">Su Kaçağı</button>
+                    <button class="filter-btn" data-filter="tikaniklik">Tıkanıklık</button>
+                    <button class="filter-btn" data-filter="kombi">Kombi</button>
+                    <button class="filter-btn" data-filter="tadilat">Tadilat</button>
+                </div>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Örnek static content -->
+                <div class="gallery-item" data-category="su-kacagi">
+                    <div class="gallery-image">
+                        <img src="/images/pexels-tima-miroshnichenko-6474205.jpg" alt="Su Kaçağı Tamiri" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Su Kaçağı Tamiri</h3>
+                                <p>Karşıyaka, İzmir</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="tikaniklik">
+                    <div class="gallery-image">
+                        <img src="/images/pexels-kseniachernaya-5691536.jpg" alt="Tıkanıklık Açma" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Tıkanıklık Açma</h3>
+                                <p>Bornova, İzmir</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="kombi">
+                    <div class="gallery-image">
+                        <img src="/images/stockvault-pipes-with-handle97235.jpg" alt="Kombi Tamiri" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Kombi Tamiri</h3>
+                                <p>Konak, İzmir</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="tadilat">
+                    <div class="gallery-image">
+                        <img src="/images/hero-plumber.jpg" alt="Banyo Tadilat" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-info">
+                                <h3>Banyo Tadilat</h3>
+                                <p>Alsancak, İzmir</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="<%= siteInfo?.logoUrl || '/images/selim-logo.png' %>" alt="<%= siteInfo?.siteName || 'Selim' %> Logo" class="footer-logo">
+                        <h3><%= siteInfo?.siteName || 'Selim Tesisat' %></h3>
+                    </div>
+                    <p><%= siteInfo?.description || 'İzmir\'de profesyonel tesisatçı hizmetleri veren güvenilir firma. Kaliteli işçilik ve müşteri memnuniyeti önceliğimiz.' %></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Hizmetlerimiz</h4>
+                    <ul>
+                        <% if (services && services.length > 0) { %>
+                            <% services.slice(0, 4).forEach(service => { %>
+                                <% if (service && service.title) { %>
+                                    <li><a href="/hizmetler#<%= service.slug || service.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') %>"><%= service.title %></a></li>
+                                <% } %>
+                            <% }); %>
+                        <% } else { %>
+                            <li><a href="/hizmetler#su-kacagi">Su Kaçağı Tamiri</a></li>
+                            <li><a href="/hizmetler#tikaniklik">Tıkanıklık Açma</a></li>
+                            <li><a href="/hizmetler#kombi">Kombi Tamiri</a></li>
+                            <li><a href="/hizmetler#tadilat">Banyo Mutfak Tadilat</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>İletişim</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="icon-phone"></i>
+                            <a href="tel:<%= contactInfo?.phone || '+90XXXXXXXXX' %>"><%= contactInfo?.phone || '+90 XXX XXX XX XX' %></a>
+                        </li>
+                        <li>
+                            <i class="icon-mail"></i>
+                            <a href="mailto:<%= contactInfo?.email || 'info@selimtesisat.com' %>"><%= contactInfo?.email || 'info@selimtesisat.com' %></a>
+                        </li>
+                        <li>
+                            <i class="icon-location"></i>
+                            <span><%= contactInfo?.address || 'İzmir, Türkiye' %></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 <%= siteInfo?.siteName || 'Selim Sıhhi Tesisat ve Tamirat' %>. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script>
+        // Gallery filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

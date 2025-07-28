@@ -28,6 +28,18 @@ const sitemapUrls: SitemapUrl[] = [
     lastmod: new Date().toISOString()
   },
   {
+    url: '/referanslar',
+    changefreq: 'weekly',
+    priority: 0.8,
+    lastmod: new Date().toISOString()
+  },
+  {
+    url: '/galeri',
+    changefreq: 'weekly',
+    priority: 0.7,
+    lastmod: new Date().toISOString()
+  },
+  {
     url: '/iletisim',
     changefreq: 'monthly',
     priority: 0.8,
