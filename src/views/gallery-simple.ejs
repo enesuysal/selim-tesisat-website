@@ -15,6 +15,95 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css">
     
+    <!-- Inline Lightbox Styles -->
+    <style>
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        #lightbox-image {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .lightbox-info {
+            padding: 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .lightbox-info h3 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .lightbox-info p {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        .gallery-image img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-image:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -71,22 +160,36 @@
             </div>
             
             <div class="gallery-grid">
-                <!-- Örnek static content -->
-                <div class="gallery-item" data-category="su-kacagi">
-                    <div class="gallery-image">
-                        <img src="/images/pexels-tima-miroshnichenko-6474205.jpg" alt="Su Kaçağı Tamiri" loading="lazy">
-                        <div class="gallery-overlay">
-                            <div class="gallery-info">
-                                <h3>Su Kaçağı Tamiri</h3>
-                                <p>Karşıyaka, İzmir</p>
+                <% if (gallery && gallery.length > 0) { %>
+                    <% gallery.forEach(item => { %>
+                        <% if (item && item.title) { %>
+                        <div class="gallery-item" data-category="<%= item.category %>">
+                            <div class="gallery-image">
+                                <img src="<%= item.imageUrl %>" alt="<%= item.title %>" loading="lazy" 
+                     data-image="<%= item.imageUrl %>" 
+                     data-title="<%= item.title %>" 
+                     data-location="<%= item.location %>" 
+                     class="gallery-image-click" 
+                     style="cursor: pointer; width: 100%; height: 250px; object-fit: cover;">
+                                <!-- Temporarily remove overlay -->
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="tikaniklik">
+                        <% } %>
+                    <% }); %>
+                <% } else { %>
+                <!-- Fallback static content -->
+                    <div class="gallery-item" data-category="su-kacagi">
+                        <div class="gallery-image">
+                            <img src="/images/pexels-tima-miroshnichenko-6474205.jpg" alt="Su Kaçağı Tamiri" loading="lazy" 
+                                 data-image="/images/pexels-tima-miroshnichenko-6474205.jpg" 
+                                 data-title="Su Kaçağı Tamiri" 
+                                 data-location="Karşıyaka, İzmir" 
+                                 class="gallery-image-click" 
+                                 style="cursor: pointer; width: 100%; height: 250px; object-fit: cover;">
+                        </div>
+                    </div>                <div class="gallery-item" data-category="tikaniklik">
                     <div class="gallery-image">
-                        <img src="/images/pexels-kseniachernaya-5691536.jpg" alt="Tıkanıklık Açma" loading="lazy">
+                        <img src="/images/pexels-kseniachernaya-5691536.jpg" alt="Tıkanıklık Açma" loading="lazy" class="lightbox-trigger" data-title="Tıkanıklık Açma" data-location="Bornova, İzmir">
                         <div class="gallery-overlay">
                             <div class="gallery-info">
                                 <h3>Tıkanıklık Açma</h3>
@@ -98,7 +201,7 @@
                 
                 <div class="gallery-item" data-category="kombi">
                     <div class="gallery-image">
-                        <img src="/images/stockvault-pipes-with-handle97235.jpg" alt="Kombi Tamiri" loading="lazy">
+                        <img src="/images/stockvault-pipes-with-handle97235.jpg" alt="Kombi Tamiri" loading="lazy" class="lightbox-trigger" data-title="Kombi Tamiri" data-location="Konak, İzmir">
                         <div class="gallery-overlay">
                             <div class="gallery-info">
                                 <h3>Kombi Tamiri</h3>
@@ -110,7 +213,7 @@
                 
                 <div class="gallery-item" data-category="tadilat">
                     <div class="gallery-image">
-                        <img src="/images/hero-plumber.jpg" alt="Banyo Tadilat" loading="lazy">
+                        <img src="/images/hero-plumber.jpg" alt="Banyo Tadilat" loading="lazy" class="lightbox-trigger" data-title="Banyo Tadilat" data-location="Alsancak, İzmir">
                         <div class="gallery-overlay">
                             <div class="gallery-info">
                                 <h3>Banyo Tadilat</h3>
@@ -119,9 +222,23 @@
                         </div>
                     </div>
                 </div>
+                <% } %>
             </div>
         </div>
     </section>
+
+    <!-- Simple Lightbox Modal -->
+    <div id="simple-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; cursor: pointer;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; text-align: center;">
+            <img id="lightbox-img" style="max-width: 100%; max-height: 80vh; border-radius: 8px;">
+            <div style="color: white; margin-top: 15px;">
+                <h3 id="lightbox-title" style="margin: 10px 0; font-size: 20px;"></h3>
+                <p id="lightbox-location" style="margin: 5px 0; font-size: 16px; opacity: 0.8;"></p>
+                <p style="font-size: 14px; opacity: 0.6; margin-top: 20px;">Kapatmak için tıklayın veya ESC'ye basın</p>
+            </div>
+        </div>
+        <button id="lightbox-close-btn" style="position: absolute; top: 20px; right: 30px; background: none; border: none; color: white; font-size: 40px; cursor: pointer; z-index: 10000;">&times;</button>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -175,10 +292,81 @@
         </div>
     </footer>
 
-    <script src="/js/main.js"></script>
     <script>
-        // Gallery filtering functionality
+        // Updated lightbox functions
+        function showImage(imageSrc, title, location) {
+          console.log('showImage called with:', imageSrc, title, location);
+          const modal = document.getElementById('simple-lightbox');
+          const modalImg = document.getElementById('lightbox-img');
+          const modalTitle = document.getElementById('lightbox-title');
+          const modalLocation = document.getElementById('lightbox-location');
+          
+          if (modal && modalImg) {
+            modalImg.src = imageSrc;
+            if (modalTitle) modalTitle.textContent = title || '';
+            if (modalLocation) modalLocation.textContent = location || '';
+            modal.style.display = 'block';
+            console.log('Modal opened successfully');
+          } else {
+            console.error('Modal elements not found');
+          }
+        }
+
+        function hideImage() {
+          console.log('hideImage called');
+          const modal = document.getElementById('simple-lightbox');
+          if (modal) {
+            modal.style.display = 'none';
+            console.log('Modal closed successfully');
+          }
+        }
+        
+        console.log('=== GALLERY LIGHTBOX STARTING ===');
+        
+        // Wait for DOM to be ready
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, setting up lightbox...');
+            
+            // Add click event listeners to gallery images
+            const galleryImages = document.querySelectorAll('.gallery-image-click');
+            console.log('Found gallery images:', galleryImages.length);
+            
+            galleryImages.forEach(function(img, index) {
+                console.log('Setting up image', index + 1, ':', img.dataset.title);
+                img.addEventListener('click', function() {
+                    console.log('Image clicked:', this.dataset.title);
+                    showImage(this.dataset.image, this.dataset.title, this.dataset.location);
+                });
+            });
+            
+            // ESC key to close modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    hideImage();
+                }
+            });
+            
+            // Close button click event
+            const closeBtn = document.getElementById('lightbox-close-btn');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent event bubbling
+                    hideImage();
+                });
+            }
+            
+            // Background click to close modal
+            const lightboxModal = document.getElementById('simple-lightbox');
+            if (lightboxModal) {
+                lightboxModal.addEventListener('click', function(e) {
+                    // Only close if clicking the background, not the content
+                    if (e.target === this) {
+                        hideImage();
+                    }
+                });
+            }
+            
+            // Gallery filter functionality
             const filterButtons = document.querySelectorAll('.filter-btn');
             const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -200,6 +388,8 @@
                     });
                 });
             });
+            
+            console.log('=== LIGHTBOX SETUP COMPLETE ===');
         });
     </script>
 </body>

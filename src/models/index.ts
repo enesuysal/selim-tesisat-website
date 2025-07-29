@@ -265,8 +265,20 @@ const portfolioSchema = new mongoose.Schema({
   clientName: { type: String }, // Optional for privacy
   projectDuration: { type: String }, // e.g., "2 gün", "1 hafta"
   materials: [{ type: String }], // Used materials
-  challenges: { type: String }, // Challenges faced and how solved
-  result: { type: String }, // Final result description
+  challenges: [{ type: String }], // Array of challenges faced
+  solutions: [{ type: String }], // Array of solutions applied
+  results: [{ type: String }], // Array of results achieved
+  technologies: [{ type: String }], // Technologies/tools used
+  warrantyPeriod: { type: String, default: '2 yıl' }, // Warranty period
+  teamSize: { type: String, default: '2 Kişi' }, // Team size
+  customerRating: { type: Number, min: 1, max: 5, default: 5 }, // Customer rating
+  customerReview: {
+    text: { type: String },
+    customerName: { type: String },
+    date: { type: Date, default: Date.now }
+  },
+  cost: { type: String }, // Optional project cost
+  difficulty: { type: String, enum: ['Kolay', 'Orta', 'Zor'], default: 'Orta' },
   isActive: { type: Boolean, default: true },
   featured: { type: Boolean, default: false }, // For homepage display
   order: { type: Number, default: 0 },

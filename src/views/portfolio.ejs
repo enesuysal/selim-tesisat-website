@@ -211,7 +211,7 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>Duvar İçi Su Kaçağı Tamiri</h3>
+                        <h3>Duvar İçi Su Kaçağı Tamirixx</h3>
                         <p>Modern cihazlarla tespit edilen duvar içi su kaçağının başarıyla tamiri...</p>
                         <div class="project-meta">
                             <span class="project-location">
@@ -301,13 +301,395 @@
         </div>
     </footer>
 
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="project-modal" onclick="closeProjectModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button type="button" class="modal-close" id="close-btn">&times;</button>
+            <div class="modal-body">
+                <div class="project-images">
+                    <div class="main-image">
+                        <img id="modal-main-image" src="" alt="">
+                    </div>
+                    <div class="image-thumbnails" id="modal-thumbnails">
+                        <!-- Thumbnail images will be populated here -->
+                    </div>
+                </div>
+                <div class="project-details">
+                    <h2 id="modal-project-title"></h2>
+                    <div class="project-meta-info">
+                        <div class="meta-item">
+                            <i class="icon-location"></i>
+                            <span id="modal-project-location"></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="icon-calendar"></i>
+                            <span id="modal-project-date"></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="icon-clock"></i>
+                            <span id="modal-project-duration"></span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h4>Proje Detayları</h4>
+                        <p id="modal-project-description"></p>
+                        
+                        <div class="project-challenges">
+                            <h5>Karşılaşılan Zorluklar</h5>
+                            <ul id="modal-project-challenges">
+                                <li>Eski tesisat sisteminin değiştirilmesi</li>
+                                <li>Minimum hasar ile çözüm bulunması</li>
+                                <li>Kısa sürede tamamlanması gerekliliği</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-solutions">
+                            <h5>Uygulanan Çözümler</h5>
+                            <ul id="modal-project-solutions">
+                                <li>Modern tespit cihazları kullanıldı</li>
+                                <li>Kaliteli ve garantili malzemeler tercih edildi</li>
+                                <li>Profesyonel ekip ile hızlı müdahale sağlandı</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-results">
+                            <h5>Sonuçlar</h5>
+                            <ul id="modal-project-results">
+                                <li>✅ Problem tamamen çözüldü</li>
+                                <li>✅ Müşteri memnuniyeti sağlandı</li>
+                                <li>✅ 2 yıl garanti verildi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-technologies" id="modal-project-technologies">
+                        <h4>Kullanılan Malzemeler ve Ekipmanlar</h4>
+                        <div class="tech-tags" id="modal-tech-tags"></div>
+                        
+                        <div class="project-specs">
+                            <h5>Teknik Özellikler</h5>
+                            <div class="specs-grid" id="modal-specs">
+                                <div class="spec-item">
+                                    <span class="spec-label">Çalışma Süresi:</span>
+                                    <span class="spec-value" id="modal-work-duration">1 Gün</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Ekip Sayısı:</span>
+                                    <span class="spec-value">2 Kişi</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Garanti Süresi:</span>
+                                    <span class="spec-value">2 Yıl</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Müşteri Puanı:</span>
+                                    <span class="spec-value">⭐⭐⭐⭐⭐</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="customer-review">
+                            <h5>Müşteri Yorumu</h5>
+                            <blockquote id="modal-customer-review">
+                                "Çok profesyonel ve hızlı bir hizmet aldık. Sorun tamamen çözüldü ve garanti verdiler. Kesinlikle tavsiye ederim!"
+                            </blockquote>
+                            <cite id="modal-customer-name">- Müşteri</cite>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .project-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0,0,0,0.7);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+            outline: none;
+            user-select: none;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            background: rgba(255,0,0,0.8);
+            border-color: #fff;
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 80vh;
+        }
+
+        .project-images {
+            background: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-image {
+            flex: 1;
+            margin-bottom: 15px;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .image-thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+
+        .thumbnail {
+            min-width: 80px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .thumbnail.active {
+            border-color: #007bff;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-details {
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .project-meta-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+        }
+
+        .meta-item i {
+            color: #007bff;
+            width: 16px;
+        }
+
+        .project-description {
+            margin: 20px 0;
+        }
+
+        .project-description h4,
+        .project-technologies h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+        }
+
+        .project-description h5 {
+            color: #007bff;
+            margin: 20px 0 10px 0;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-challenges ul,
+        .project-solutions ul,
+        .project-results ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .project-challenges li,
+        .project-solutions li,
+        .project-results li {
+            margin: 8px 0;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .project-results li {
+            color: #28a745;
+            font-weight: 500;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: #007bff;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #007bff;
+        }
+
+        .spec-label {
+            font-weight: 500;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .spec-value {
+            font-weight: 600;
+            color: #333;
+            font-size: 13px;
+        }
+
+        .customer-review {
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+
+        .customer-review blockquote {
+            font-style: italic;
+            color: #555;
+            margin: 10px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .customer-review cite {
+            color: #007bff;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-details {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+            
+            .modal-body {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            
+            .project-images {
+                max-height: 300px;
+            }
+        }
+    </style>
+
     <script src="/js/main.js"></script>
     <script>
+        // Simple close function in global scope
+        function closeProjectModal() {
+            console.log('Attempting to close modal...');
+            const modal = document.getElementById('project-modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                console.log('Modal closed successfully');
+            } else {
+                console.error('Modal element not found');
+            }
+        }
+
         // Portfolio filtering functionality
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, setting up portfolio functionality...');
+            
             const filterButtons = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
             const categoryCards = document.querySelectorAll('.category-card');
+            const viewProjectButtons = document.querySelectorAll('.view-project-btn');
 
             // Filter button functionality
             filterButtons.forEach(button => {
@@ -345,6 +727,224 @@
                     }
                 });
             });
+
+            // View project button functionality
+            viewProjectButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const projectId = this.getAttribute('data-project-id');
+                    openProjectModal(projectId);
+                });
+            });
+
+            // Close button functionality - Simple direct approach
+            const closeBtn = document.getElementById('close-btn');
+            if (closeBtn) {
+                closeBtn.onclick = function() {
+                    console.log('Close button clicked');
+                    closeProjectModal();
+                };
+                console.log('Close button event attached');
+            } else {
+                console.error('Close button not found');
+            }
+        });
+
+        // Project modal functions
+        async function openProjectModal(projectId) {
+            console.log('Opening project modal for ID:', projectId);
+            
+            try {
+                // Fetch project data from API
+                const response = await fetch(`/api/portfolio/${projectId}`);
+                if (!response.ok) {
+                    throw new Error('Project not found');
+                }
+                
+                const project = await response.json();
+                console.log('Fetched project data:', project);
+                
+                // Populate modal content with dynamic data
+                document.getElementById('modal-project-title').textContent = project.title || 'Proje Başlığı';
+                document.getElementById('modal-project-location').textContent = project.location || 'Lokasyon';
+                document.getElementById('modal-project-duration').textContent = project.projectDuration || 'Belirtilmemiş';
+                document.getElementById('modal-project-description').textContent = project.description || 'Açıklama mevcut değil';
+                
+                // Set main image
+                if (project.images && project.images.length > 0) {
+                    const primaryImage = project.images.find(img => img.isPrimary) || project.images[0];
+                    document.getElementById('modal-main-image').src = primaryImage.url;
+                    document.getElementById('modal-main-image').alt = primaryImage.alt || project.title;
+                } else {
+                    document.getElementById('modal-main-image').src = '/images/portfolio-placeholder.jpg';
+                    document.getElementById('modal-main-image').alt = project.title;
+                }
+                
+                // Set completion date
+                if (project.completionDate) {
+                    const date = new Date(project.completionDate).toLocaleDateString('tr-TR');
+                    document.getElementById('modal-project-date').textContent = date;
+                }
+                
+                // Set work duration in specs
+                document.getElementById('modal-work-duration').textContent = project.projectDuration || '1 Gün';
+                
+                // Update challenges if available
+                const challengesList = document.getElementById('modal-project-challenges');
+                if (project.challenges && project.challenges.length > 0) {
+                    challengesList.innerHTML = project.challenges.map(challenge => `<li>${challenge}</li>`).join('');
+                } else {
+                    challengesList.innerHTML = `
+                        <li>Eski sistem problemlerinin çözümü</li>
+                        <li>Minimum hasar ile müdahale</li>
+                        <li>Kısa sürede çözüm bulma</li>
+                    `;
+                }
+                
+                // Update solutions if available
+                const solutionsList = document.getElementById('modal-project-solutions');
+                if (project.solutions && project.solutions.length > 0) {
+                    solutionsList.innerHTML = project.solutions.map(solution => `<li>${solution}</li>`).join('');
+                } else {
+                    solutionsList.innerHTML = `
+                        <li>Modern tespit cihazları kullanıldı</li>
+                        <li>Kaliteli ve garantili malzemeler tercih edildi</li>
+                        <li>Profesyonel ekip ile hızlı müdahale</li>
+                    `;
+                }
+                
+                // Update results if available
+                const resultsList = document.getElementById('modal-project-results');
+                if (project.results && project.results.length > 0) {
+                    resultsList.innerHTML = project.results.map(result => `<li>✅ ${result}</li>`).join('');
+                } else {
+                    resultsList.innerHTML = `
+                        <li>✅ Problem tamamen çözüldü</li>
+                        <li>✅ Müşteri memnuniyeti sağlandı</li>
+                        <li>✅ ${project.warrantyPeriod || '2 yıl'} garanti verildi</li>
+                    `;
+                }
+                
+                // Add tech tags based on project data or category
+                const techTags = document.getElementById('modal-tech-tags');
+                let tags = [];
+                
+                if (project.technologies && project.technologies.length > 0) {
+                    tags = project.technologies;
+                } else {
+                    // Fallback based on category
+                    switch(project.category) {
+                        case 'su-kacagi':
+                            tags = ['Su Kaçağı Tespit Cihazı', 'PPR Boru', 'Elektrofüzyon Ek', 'Basınç Test Pompası', 'Termal Kamera'];
+                            break;
+                        case 'tikaniklik':
+                            tags = ['Spiral Makinesi', 'Basınçlı Su Sistemi', 'Kamera Sistemi', 'Kimyasal Çözücü', 'Vakum Sistemi'];
+                            break;
+                        case 'kombi':
+                            tags = ['Orijinal Yedek Parça', 'Gaz Kaçağı Test Cihazı', 'Dijital Manometre', 'Temizlik Solüsyonu', 'Bakım Kiti'];
+                            break;
+                        case 'tadilat':
+                            tags = ['Seramik Kaplama', 'Su Yalıtımı', 'Isı Yalıtımı', 'Modern Armatürler', 'LED Aydınlatma'];
+                            break;
+                        default:
+                            tags = ['Profesyonel Ekipman', 'Kaliteli Malzeme', 'Garantili İş', 'Hızlı Servis'];
+                    }
+                }
+                
+                techTags.innerHTML = tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
+                
+                // Update customer review
+                let reviewText = 'Çok profesyonel ve hızlı bir hizmet aldık. Sorun tamamen çözüldü ve garanti verdiler. Kesinlikle tavsiye ederim!';
+                let customerName = 'Müşteri';
+                
+                if (project.customerReview) {
+                    reviewText = project.customerReview.text || reviewText;
+                    customerName = project.customerReview.customerName || customerName;
+                } else {
+                    // Random review for variety
+                    const reviews = [
+                        { text: "Çok profesyonel ve hızlı bir hizmet aldık. Sorun tamamen çözüldü ve garanti verdiler. Kesinlikle tavsiye ederim!", name: "Ahmet B." },
+                        { text: "İşlerini çok temiz yapıyorlar. Hem kaliteli hem de uygun fiyatlı. Çok memnun kaldık.", name: "Fatma K." },
+                        { text: "Geç saatte aradığımız halde hemen gelip sorunu çözdüler. Gerçekten güvenilir bir firma.", name: "Mehmet Y." },
+                        { text: "Tadilat işimizi baştan sona kusursuz yaptılar. İşçilikleri ve malzeme kaliteleri çok iyi.", name: "Zeynep A." }
+                    ];
+                    const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
+                    reviewText = randomReview.text;
+                    customerName = randomReview.name;
+                }
+                
+                document.getElementById('modal-customer-review').textContent = reviewText;
+                document.getElementById('modal-customer-name').textContent = `- ${customerName}`;
+                
+                // Show modal
+                document.getElementById('project-modal').style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                
+                console.log('Modal opened successfully with dynamic data');
+                
+            } catch (error) {
+                console.error('Error fetching project data:', error);
+                // Fallback to static data if API fails
+                openProjectModalFallback(projectId);
+            }
+        }
+        
+        // Fallback function for when API fails
+        function openProjectModalFallback(projectId) {
+            console.log('Using fallback data for project:', projectId);
+            
+            // Get project data from the page as before
+            const projectCard = document.querySelector(`[data-project-id="${projectId}"]`).closest('.project-card');
+            if (!projectCard) return;
+            
+            const projectTitle = projectCard.querySelector('h3').textContent;
+            const projectLocation = projectCard.querySelector('.project-location').textContent.trim();
+            const projectDuration = projectCard.querySelector('.project-duration').textContent.trim();
+            const projectImage = projectCard.querySelector('img').src;
+            const projectDescription = projectCard.querySelector('.project-content p').textContent;
+            
+            // Populate modal with static data
+            document.getElementById('modal-project-title').textContent = projectTitle;
+            document.getElementById('modal-project-location').textContent = projectLocation;
+            document.getElementById('modal-project-duration').textContent = projectDuration;
+            document.getElementById('modal-project-description').textContent = projectDescription;
+            document.getElementById('modal-main-image').src = projectImage;
+            document.getElementById('modal-main-image').alt = projectTitle;
+            
+            // Show modal
+            document.getElementById('project-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            console.log('Closing project modal');
+            const modal = document.getElementById('project-modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                console.log('Project modal closed successfully');
+            } else {
+                console.error('Project modal not found');
+            }
+        }
+
+        // Close modal when clicking outside - Remove the old event listener
+        // document.addEventListener('click', function(e) {
+        //     const modal = document.getElementById('project-modal');
+        //     if (e.target === modal) {
+        //         closeProjectModal();
+        //     }
+        // });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('project-modal');
+                if (modal && modal.style.display === 'block') {
+                    closeProjectModal();
+                }
+            }
         });
     </script>
 </body>

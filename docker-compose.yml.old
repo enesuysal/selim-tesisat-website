@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  selimsite:
+    image: enesuysal/selimsite:latest
+    container_name: selimsite
+    restart: unless-stopped
+    ports:
+      - "80:80"

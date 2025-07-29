@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Lightbox</title>
+</head>
+<body>
+    <h1>Test Lightbox</h1>
+    
+    <img src="/images/hero-plumber.jpg" alt="Test" onclick="showLightbox(this.src)" style="width: 200px; cursor: pointer; border: 2px solid red;">
+    
+    <div id="lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999;" onclick="hideLightbox()">
+        <img id="lightbox-image" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%;">
+    </div>
+    
+    <script>
+        function showLightbox(src) {
+            console.log('Showing lightbox with:', src);
+            document.getElementById('lightbox-image').src = src;
+            document.getElementById('lightbox').style.display = 'block';
+        }
+        
+        function hideLightbox() {
+            console.log('Hiding lightbox');
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

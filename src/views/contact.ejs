@@ -417,7 +417,7 @@
 
         <div class="emergency-banner">
             <h3><%= contactPage?.emergencyTitle || '🚨 ACİL DURUM 🚨' %></h3>
-            <p><%= contactPage?.emergencyDescription || 'Acil tesisat ihtiyacınız için hemen arayın:' %> <a href="tel:<%= contactPage?.emergencyPhone || contactInfo?.phone || '+905551234567' %>"><%= contactPage?.emergencyPhone || contactInfo?.phone || '+90 555 123 45 67' %></a></p>
+            <p><%= contactPage?.emergencyDescription || 'Acil tesisat ihtiyacınız için hemen arayın:' %> <a href="tel:<%= contactInfo?.emergencyPhone || '+905551234567' %>"><%= contactInfo?.phone || '+90 555 123 45 67' %></a></p>
         </div>
 
         <div class="contact-grid">
@@ -524,7 +524,7 @@
             <h2><%= contactPage?.serviceAreasTitle || 'Hizmet Verdiğimiz Bölgeler' %></h2>
             <img src="<%= contactPage?.serviceAreasImage || '/images/taylor-heery-M0lMY68aMfM-unsplash.jpg' %>" alt="Hizmet Bölgeleri" style="width:100%;max-width:600px;display:block;margin:0 auto 2rem auto;border-radius:12px;box-shadow:0 2px 10px rgba(14,165,233,0.08);">
             <div class="areas-grid">
-                <% (contactPage?.serviceAreas || [
+                <% (servicesPage?.serviceAreas || contactPage?.serviceAreas || [
                     'Bornova', 'Konak', 'Buca', 'Karşıyaka', 'Balçova', 'Çiğli',
                     'Gaziemir', 'Karabağlar', 'Narlıdere', 'Bayraklı', 'Alsancak', 'Üçyol'
                 ]).forEach(area => { %>
@@ -535,7 +535,7 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2025 <%= siteInfo?.companyName || 'Selim Sıhhi Tesisat ve Tamirat' %>. <%= siteInfo?.footerRights || 'Tüm hakları saklıdır.' %></p>
+        <p>&copy; 2025 <%= siteInfo?.siteName || 'Selim Sıhhi Tesisat ve Tamirat' %>. Tüm hakları saklıdır.</p>
         <p><%= siteInfo?.footerSlogan || 'Kalite ile Tanışın... 💧' %></p>
     </footer>
 

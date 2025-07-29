@@ -216,6 +216,20 @@ app.get('/referanslar', async (req, res) => {
   }
 });
 
+// API endpoint for single portfolio project
+app.get('/api/portfolio/:id', async (req, res) => {
+  try {
+    const project = await Portfolio.findById(req.params.id);
+    if (!project) {
+      return res.status(404).json({ error: 'Project not found' });
+    }
+    res.json(project);
+  } catch (error) {
+    console.error('Error fetching project:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.get('/hakkimizda', async (req, res) => {
   try {
     const [aboutPage, contactInfo, siteInfo] = await Promise.all([
@@ -245,18 +259,20 @@ app.get('/hakkimizda', async (req, res) => {
 
 app.get('/iletisim', async (req, res) => {
   try {
-    const [contactPage, contactInfo, siteInfo, services] = await Promise.all([
+    const [contactPage, contactInfo, siteInfo, services, servicesPage] = await Promise.all([
       ContactPage.findOne(),
       ContactInfo.findOne(),
       SiteInfo.findOne(),
-      Service.find({ isActive: true }).sort({ order: 1, createdAt: 1 })
+      Service.find({ isActive: true }).sort({ order: 1, createdAt: 1 }),
+      ServicesPage.findOne()
     ]);
 
     res.render('contact', { 
       contactPage,
       contactInfo,
       siteInfo,
-      services: services || []
+      services: services || [],
+      servicesPage
     });
   } catch (error) {
     console.error('Error loading contact page:', error);
