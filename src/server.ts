@@ -223,10 +223,10 @@ app.get('/api/portfolio/:id', async (req, res) => {
     if (!project) {
       return res.status(404).json({ error: 'Project not found' });
     }
-    res.json(project);
+    return res.json(project);
   } catch (error) {
     console.error('Error fetching project:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error' });
   }
 });
 

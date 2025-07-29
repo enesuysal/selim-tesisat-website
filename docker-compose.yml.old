@@ -6,4 +6,4 @@ services:
     container_name: selimsite
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "3006:3000"
