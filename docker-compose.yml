@@ -2,26 +2,17 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    image: enesuysal/selimsiteadmin:latest
+    ports:
+      - "3007:3000"
+    environment:
+      - MONGODB_URI=mongodb+srv://enesuysal:gezEHCEx1Jsxds4X@selimdb.x4clf62.mongodb.net/?retryWrites=true&w=majority&appName=selimDB
+      - JWT_SECRET=4706170506b9b6d9cad98c41963ed5fd637c916fe911f3fa49720ecf83be8b746981320d6721b224a8bf4d00fed0d5b0efdd0235a1228d798ca3f121876e352b
+
+  
+  selimsite:
+    image: enesuysal/selimsite:latest
+    container_name: selimsite
+    restart: unless-stopped
     ports:
       - "3006:3000"
-    environment:
-      - NODE_ENV=production
-      - PORT=3000
-      - SMTP_HOST=smtp.gmail.com
-      - SMTP_PORT=587
-      - SMTP_USER=${SMTP_USER}
-      - SMTP_PASS=${SMTP_PASS}
-      - CONTACT_EMAIL=${CONTACT_EMAIL}
-    volumes:
-      - ./logs:/app/logs
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-
-volumes:
-  logs:

@@ -17,31 +17,20 @@
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Common Header JavaScript -->
+    <script src="/js/header.js"></script>
+    
+    <style>
+        /* Adjust for fixed header */
+        .page-hero {
+            margin-top: 80px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-brand">
-                    <img src="/images/selim-logo.png" alt="Selim Sıhhi Tesisat Logo" class="logo">
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="/" class="nav-link">Ana Sayfa</a></li>
-                    <li><a href="/hizmetler" class="nav-link">Hizmetler</a></li>
-                    <li><a href="/hakkimizda" class="nav-link">Hakkımızda</a></li>
-                    <li><a href="/referanslar" class="nav-link">Referanslar</a></li>
-                    <li><a href="/galeri" class="nav-link active">Galeri</a></li>
-                    <li><a href="/iletisim" class="nav-link">İletişim</a></li>
-                </ul>
-                <div class="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Include Common Header -->
+    <%- include('partials/header', { currentPage: 'gallery' }) %>
 
     <!-- Hero Section -->
     <section class="page-hero">

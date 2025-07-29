@@ -35,6 +35,16 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css">
     
+    <!-- Common Header JavaScript -->
+    <script src="/js/header.js"></script>
+    
+    <style>
+        /* Adjust for fixed header */
+        .page-hero {
+            margin-top: 80px;
+        }
+    </style>
+    
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -52,29 +62,8 @@
     </script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-brand">
-                    <img src="<%= siteInfo?.logo || '/images/selim-logo.png' %>" alt="<%= siteInfo?.siteName || 'Selim Sıhhi Tesisat' %> Logo" class="logo">
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="/" class="nav-link">Ana Sayfa</a></li>
-                    <li><a href="/hizmetler" class="nav-link">Hizmetler</a></li>
-                    <li><a href="/hakkimizda" class="nav-link">Hakkımızda</a></li>
-                    <li><a href="/referanslar" class="nav-link active">Referanslar</a></li>
-                    <li><a href="/galeri" class="nav-link">Galeri</a></li>
-                    <li><a href="/iletisim" class="nav-link">İletişim</a></li>
-                </ul>
-                <div class="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Include Common Header -->
+    <%- include('partials/header', { currentPage: 'portfolio' }) %>
 
     <!-- Hero Section -->
     <section class="page-hero">

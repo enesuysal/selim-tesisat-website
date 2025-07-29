@@ -1740,4 +1740,936 @@ export declare const ServicesPage: mongoose.Model<{
 } & {
     __v: number;
 }>>;
+export declare const Portfolio: mongoose.Model<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    description: string;
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel";
+    isActive: boolean;
+    order: number;
+    images: mongoose.Types.DocumentArray<{
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }> & {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }>;
+    location: string;
+    completionDate: NativeDate;
+    materials: string[];
+    challenges: string[];
+    solutions: string[];
+    results: string[];
+    technologies: string[];
+    warrantyPeriod: string;
+    teamSize: string;
+    customerRating: number;
+    difficulty: "Kolay" | "Orta" | "Zor";
+    featured: boolean;
+    tags: string[];
+    beforeImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    afterImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    clientName?: string | null;
+    projectDuration?: string | null;
+    customerReview?: {
+        date: NativeDate;
+        text?: string | null;
+        customerName?: string | null;
+    } | null;
+    cost?: string | null;
+}, {}, {}, {}, mongoose.Document<unknown, {}, {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    description: string;
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel";
+    isActive: boolean;
+    order: number;
+    images: mongoose.Types.DocumentArray<{
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }> & {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }>;
+    location: string;
+    completionDate: NativeDate;
+    materials: string[];
+    challenges: string[];
+    solutions: string[];
+    results: string[];
+    technologies: string[];
+    warrantyPeriod: string;
+    teamSize: string;
+    customerRating: number;
+    difficulty: "Kolay" | "Orta" | "Zor";
+    featured: boolean;
+    tags: string[];
+    beforeImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    afterImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    clientName?: string | null;
+    projectDuration?: string | null;
+    customerReview?: {
+        date: NativeDate;
+        text?: string | null;
+        customerName?: string | null;
+    } | null;
+    cost?: string | null;
+}, {}> & {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    description: string;
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel";
+    isActive: boolean;
+    order: number;
+    images: mongoose.Types.DocumentArray<{
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }> & {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }>;
+    location: string;
+    completionDate: NativeDate;
+    materials: string[];
+    challenges: string[];
+    solutions: string[];
+    results: string[];
+    technologies: string[];
+    warrantyPeriod: string;
+    teamSize: string;
+    customerRating: number;
+    difficulty: "Kolay" | "Orta" | "Zor";
+    featured: boolean;
+    tags: string[];
+    beforeImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    afterImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    clientName?: string | null;
+    projectDuration?: string | null;
+    customerReview?: {
+        date: NativeDate;
+        text?: string | null;
+        customerName?: string | null;
+    } | null;
+    cost?: string | null;
+} & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, {
+    timestamps: true;
+}, {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    description: string;
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel";
+    isActive: boolean;
+    order: number;
+    images: mongoose.Types.DocumentArray<{
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }> & {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }>;
+    location: string;
+    completionDate: NativeDate;
+    materials: string[];
+    challenges: string[];
+    solutions: string[];
+    results: string[];
+    technologies: string[];
+    warrantyPeriod: string;
+    teamSize: string;
+    customerRating: number;
+    difficulty: "Kolay" | "Orta" | "Zor";
+    featured: boolean;
+    tags: string[];
+    beforeImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    afterImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    clientName?: string | null;
+    projectDuration?: string | null;
+    customerReview?: {
+        date: NativeDate;
+        text?: string | null;
+        customerName?: string | null;
+    } | null;
+    cost?: string | null;
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    description: string;
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel";
+    isActive: boolean;
+    order: number;
+    images: mongoose.Types.DocumentArray<{
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }> & {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }>;
+    location: string;
+    completionDate: NativeDate;
+    materials: string[];
+    challenges: string[];
+    solutions: string[];
+    results: string[];
+    technologies: string[];
+    warrantyPeriod: string;
+    teamSize: string;
+    customerRating: number;
+    difficulty: "Kolay" | "Orta" | "Zor";
+    featured: boolean;
+    tags: string[];
+    beforeImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    afterImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    clientName?: string | null;
+    projectDuration?: string | null;
+    customerReview?: {
+        date: NativeDate;
+        text?: string | null;
+        customerName?: string | null;
+    } | null;
+    cost?: string | null;
+}>, {}> & mongoose.FlatRecord<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    description: string;
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel";
+    isActive: boolean;
+    order: number;
+    images: mongoose.Types.DocumentArray<{
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }> & {
+        url: string;
+        alt: string;
+        isPrimary: boolean;
+    }>;
+    location: string;
+    completionDate: NativeDate;
+    materials: string[];
+    challenges: string[];
+    solutions: string[];
+    results: string[];
+    technologies: string[];
+    warrantyPeriod: string;
+    teamSize: string;
+    customerRating: number;
+    difficulty: "Kolay" | "Orta" | "Zor";
+    featured: boolean;
+    tags: string[];
+    beforeImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    afterImages: mongoose.Types.DocumentArray<{
+        url?: string | null;
+        alt?: string | null;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        url?: string | null;
+        alt?: string | null;
+    }> & {
+        url?: string | null;
+        alt?: string | null;
+    }>;
+    clientName?: string | null;
+    projectDuration?: string | null;
+    customerReview?: {
+        date: NativeDate;
+        text?: string | null;
+        customerName?: string | null;
+    } | null;
+    cost?: string | null;
+}> & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}>>;
+export declare const PortfolioPage: mongoose.Model<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}, {}, {}, {}, mongoose.Document<unknown, {}, {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}, {}> & {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+} & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, {
+    timestamps: true;
+}, {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}>, {}> & mongoose.FlatRecord<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}> & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}>>;
+export declare const Gallery: mongoose.Model<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel" | "oncesi" | "sonrasi";
+    isActive: boolean;
+    order: number;
+    featured: boolean;
+    tags: string[];
+    imageUrl: string;
+    captureDate: NativeDate;
+    altText: string;
+    photographer: string;
+    description?: string | null;
+    location?: string | null;
+    thumbnailUrl?: string | null;
+    projectId?: mongoose.Types.ObjectId | null;
+    dimensions?: {
+        width?: number | null;
+        height?: number | null;
+    } | null;
+    fileSize?: number | null;
+}, {}, {}, {}, mongoose.Document<unknown, {}, {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel" | "oncesi" | "sonrasi";
+    isActive: boolean;
+    order: number;
+    featured: boolean;
+    tags: string[];
+    imageUrl: string;
+    captureDate: NativeDate;
+    altText: string;
+    photographer: string;
+    description?: string | null;
+    location?: string | null;
+    thumbnailUrl?: string | null;
+    projectId?: mongoose.Types.ObjectId | null;
+    dimensions?: {
+        width?: number | null;
+        height?: number | null;
+    } | null;
+    fileSize?: number | null;
+}, {}> & {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel" | "oncesi" | "sonrasi";
+    isActive: boolean;
+    order: number;
+    featured: boolean;
+    tags: string[];
+    imageUrl: string;
+    captureDate: NativeDate;
+    altText: string;
+    photographer: string;
+    description?: string | null;
+    location?: string | null;
+    thumbnailUrl?: string | null;
+    projectId?: mongoose.Types.ObjectId | null;
+    dimensions?: {
+        width?: number | null;
+        height?: number | null;
+    } | null;
+    fileSize?: number | null;
+} & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, {
+    timestamps: true;
+}, {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel" | "oncesi" | "sonrasi";
+    isActive: boolean;
+    order: number;
+    featured: boolean;
+    tags: string[];
+    imageUrl: string;
+    captureDate: NativeDate;
+    altText: string;
+    photographer: string;
+    description?: string | null;
+    location?: string | null;
+    thumbnailUrl?: string | null;
+    projectId?: mongoose.Types.ObjectId | null;
+    dimensions?: {
+        width?: number | null;
+        height?: number | null;
+    } | null;
+    fileSize?: number | null;
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel" | "oncesi" | "sonrasi";
+    isActive: boolean;
+    order: number;
+    featured: boolean;
+    tags: string[];
+    imageUrl: string;
+    captureDate: NativeDate;
+    altText: string;
+    photographer: string;
+    description?: string | null;
+    location?: string | null;
+    thumbnailUrl?: string | null;
+    projectId?: mongoose.Types.ObjectId | null;
+    dimensions?: {
+        width?: number | null;
+        height?: number | null;
+    } | null;
+    fileSize?: number | null;
+}>, {}> & mongoose.FlatRecord<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    title: string;
+    category: "su-kacagi" | "tikaniklik" | "kombi" | "tadilat" | "genel" | "oncesi" | "sonrasi";
+    isActive: boolean;
+    order: number;
+    featured: boolean;
+    tags: string[];
+    imageUrl: string;
+    captureDate: NativeDate;
+    altText: string;
+    photographer: string;
+    description?: string | null;
+    location?: string | null;
+    thumbnailUrl?: string | null;
+    projectId?: mongoose.Types.ObjectId | null;
+    dimensions?: {
+        width?: number | null;
+        height?: number | null;
+    } | null;
+    fileSize?: number | null;
+}> & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}>>;
+export declare const GalleryPage: mongoose.Model<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}, {}, {}, {}, mongoose.Document<unknown, {}, {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}, {}> & {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+} & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, {
+    timestamps: true;
+}, {
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}>, {}> & mongoose.FlatRecord<{
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
+} & {
+    heroTitle: string;
+    heroSubtitle: string;
+    heroDescription: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    seoTitle: string;
+    seoDescription: string;
+    seoKeywords: string;
+    pageTitle: string;
+    pageDescription: string;
+    categories: mongoose.Types.DocumentArray<{
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }, mongoose.Types.Subdocument<mongoose.Types.ObjectId, any, {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }> & {
+        name: string;
+        description: string;
+        icon: string;
+        slug: string;
+    }>;
+    ctaButtonText: string;
+}> & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}>>;
 //# sourceMappingURL=index.d.ts.map

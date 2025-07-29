@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ServicesPage = exports.ContactPage = exports.CTA = exports.WhyChoose = exports.AboutPage = exports.SiteInfo = exports.SeoPage = exports.HeroContent = exports.ContactInfo = exports.Service = exports.User = void 0;
+exports.GalleryPage = exports.Gallery = exports.PortfolioPage = exports.Portfolio = exports.ServicesPage = exports.ContactPage = exports.CTA = exports.WhyChoose = exports.AboutPage = exports.SiteInfo = exports.SeoPage = exports.HeroContent = exports.ContactInfo = exports.Service = exports.User = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const userSchema = new mongoose_1.default.Schema({
     username: { type: String, required: true, unique: true },
@@ -184,4 +184,116 @@ const servicesPageSchema = new mongoose_1.default.Schema({
         }]
 }, { timestamps: true });
 exports.ServicesPage = mongoose_1.default.model('ServicesPage', servicesPageSchema);
+const portfolioSchema = new mongoose_1.default.Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    category: {
+        type: String,
+        enum: ['su-kacagi', 'tikaniklik', 'kombi', 'tadilat', 'genel'],
+        required: true
+    },
+    images: [{
+            url: { type: String, required: true },
+            alt: { type: String, required: true },
+            isPrimary: { type: Boolean, default: false }
+        }],
+    location: { type: String, required: true },
+    completionDate: { type: Date, required: true },
+    clientName: { type: String },
+    projectDuration: { type: String },
+    materials: [{ type: String }],
+    challenges: [{ type: String }],
+    solutions: [{ type: String }],
+    results: [{ type: String }],
+    technologies: [{ type: String }],
+    warrantyPeriod: { type: String, default: '2 yıl' },
+    teamSize: { type: String, default: '2 Kişi' },
+    customerRating: { type: Number, min: 1, max: 5, default: 5 },
+    customerReview: {
+        text: { type: String },
+        customerName: { type: String },
+        date: { type: Date, default: Date.now }
+    },
+    cost: { type: String },
+    difficulty: { type: String, enum: ['Kolay', 'Orta', 'Zor'], default: 'Orta' },
+    isActive: { type: Boolean, default: true },
+    featured: { type: Boolean, default: false },
+    order: { type: Number, default: 0 },
+    tags: [{ type: String }],
+    beforeImages: [{
+            url: { type: String },
+            alt: { type: String }
+        }],
+    afterImages: [{
+            url: { type: String },
+            alt: { type: String }
+        }]
+}, { timestamps: true });
+exports.Portfolio = mongoose_1.default.model('Portfolio', portfolioSchema);
+const portfolioPageSchema = new mongoose_1.default.Schema({
+    seoTitle: { type: String, default: 'Referans İşlerimiz | Selim Sıhhi Tesisat' },
+    seoDescription: { type: String, default: 'Başarıyla tamamladığımız tesisat projeleri ve müşteri referansları. Kaliteli işçiliğimizin örneklerini inceleyin.' },
+    seoKeywords: { type: String, default: 'referans işler, tesisat projeleri, müşteri yorumları, başarılı projeler' },
+    pageTitle: { type: String, default: 'Referans İşlerimiz' },
+    pageDescription: { type: String, default: 'Başarıyla tamamladığımız projeler ve memnun müşterilerimizin yorumları' },
+    heroTitle: { type: String, default: 'Kaliteli İşçiliğimizin Kanıtı' },
+    heroSubtitle: { type: String, default: 'Referans İşlerimiz' },
+    heroDescription: { type: String, default: 'Yılların tecrübesi ve kaliteli malzeme kullanımıyla tamamladığımız başarılı projelerimizi inceleyin.' },
+    categories: [{
+            name: { type: String, required: true },
+            slug: { type: String, required: true },
+            description: { type: String, required: true },
+            icon: { type: String, required: true }
+        }],
+    ctaTitle: { type: String, default: 'Projeniz İçin Teklif Alın' },
+    ctaDescription: { type: String, default: 'Sizin de projenizi başarıyla tamamlayalım. Ücretsiz keşif için bizi arayın.' },
+    ctaButtonText: { type: String, default: 'Ücretsiz Keşif' }
+}, { timestamps: true });
+exports.PortfolioPage = mongoose_1.default.model('PortfolioPage', portfolioPageSchema);
+const gallerySchema = new mongoose_1.default.Schema({
+    title: { type: String, required: true },
+    description: { type: String },
+    imageUrl: { type: String, required: true },
+    thumbnailUrl: { type: String },
+    category: {
+        type: String,
+        enum: ['su-kacagi', 'tikaniklik', 'kombi', 'tadilat', 'genel', 'oncesi', 'sonrasi'],
+        required: true
+    },
+    tags: [{ type: String }],
+    projectId: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'Portfolio' },
+    isActive: { type: Boolean, default: true },
+    featured: { type: Boolean, default: false },
+    order: { type: Number, default: 0 },
+    location: { type: String },
+    captureDate: { type: Date, default: Date.now },
+    altText: { type: String, required: true },
+    dimensions: {
+        width: { type: Number },
+        height: { type: Number }
+    },
+    fileSize: { type: Number },
+    photographer: { type: String, default: 'Selim Tesisat Ekibi' }
+}, { timestamps: true });
+exports.Gallery = mongoose_1.default.model('Gallery', gallerySchema);
+const galleryPageSchema = new mongoose_1.default.Schema({
+    seoTitle: { type: String, default: 'Galeri | Selim Sıhhi Tesisat' },
+    seoDescription: { type: String, default: 'Tamamladığımız projelerin fotoğrafları, işçiliğimizin kalitesi ve müşteri memnuniyetinin görsel kanıtları.' },
+    seoKeywords: { type: String, default: 'galeri, proje fotoğrafları, tesisat işleri, önce sonra, işçilik kalitesi' },
+    pageTitle: { type: String, default: 'Galeri' },
+    pageDescription: { type: String, default: 'Tamamladığımız projelerin fotoğrafları ve işçiliğimizin kalitesi' },
+    heroTitle: { type: String, default: 'İşçiliğimizin Görsel Kanıtı' },
+    heroSubtitle: { type: String, default: 'Proje Galerimiz' },
+    heroDescription: { type: String, default: 'Yaptığımız işlerin kalitesini fotoğraflarla görün. Her projede aynı özenle çalışıyoruz.' },
+    categories: [{
+            name: { type: String, required: true },
+            slug: { type: String, required: true },
+            description: { type: String, required: true },
+            icon: { type: String, required: true }
+        }],
+    ctaTitle: { type: String, default: 'Sizin Projeniz de Galerimizde Yer Alsın' },
+    ctaDescription: { type: String, default: 'Kaliteli işçilik ve mükemmel sonuçlar için bize ulaşın.' },
+    ctaButtonText: { type: String, default: 'Proje Başlat' }
+}, { timestamps: true });
+exports.GalleryPage = mongoose_1.default.model('GalleryPage', galleryPageSchema);
 //# sourceMappingURL=index.js.map

@@ -1,0 +1,27 @@
+<!-- Common Header for All Pages -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo-section">
+            <a href="/" class="logo-link">
+                <img src="<%= siteInfo?.logo || '/images/selim-logo.png' %>" alt="<%= siteInfo?.siteName || 'Selim Tesisat' %> Logo" class="site-logo">
+            </a>
+        </div>
+        
+        <nav class="main-navigation">
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">Ana Sayfa</a></li>
+                <li><a href="/hizmetler" class="nav-link <%= currentPage === 'services' ? 'active' : '' %>">Hizmetler</a></li>
+                <li><a href="/hakkimizda" class="nav-link <%= currentPage === 'about' ? 'active' : '' %>">Hakkımızda</a></li>
+                <li><a href="/referanslar" class="nav-link <%= currentPage === 'portfolio' ? 'active' : '' %>">Referanslar</a></li>
+                <li><a href="/galeri" class="nav-link <%= currentPage === 'gallery' ? 'active' : '' %>">Galeri</a></li>
+                <li><a href="/iletisim" class="nav-link <%= currentPage === 'contact' ? 'active' : '' %>">İletişim</a></li>
+            </ul>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </div>
+</header>

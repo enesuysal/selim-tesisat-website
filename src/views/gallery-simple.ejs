@@ -102,35 +102,71 @@
         .gallery-image:hover img {
             transform: scale(1.05);
         }
+
+        /* Mobile Navigation CSS - Higher specificity */
+        .header .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .header .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #1e293b;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .header .nav-menu {
+                position: fixed !important;
+                left: -100% !important;
+                top: 70px !important;
+                flex-direction: column !important;
+                background-color: white !important;
+                width: 100% !important;
+                text-align: center !important;
+                transition: 0.3s !important;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1) !important;
+                padding: 2rem 0 !important;
+                z-index: 1000 !important;
+            }
+            
+            .header .nav-menu.active {
+                left: 0 !important;
+            }
+            
+            .header .nav-toggle {
+                display: flex !important;
+            }
+            
+            .header .nav-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .header .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .header .nav-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
     </style>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Common Header JavaScript -->
+    <script src="/js/header.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-brand">
-                    <img src="/images/selim-logo.png" alt="Selim Sıhhi Tesisat Logo" class="logo">
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="/" class="nav-link">Ana Sayfa</a></li>
-                    <li><a href="/hizmetler" class="nav-link">Hizmetler</a></li>
-                    <li><a href="/hakkimizda" class="nav-link">Hakkımızda</a></li>
-                    <li><a href="/referanslar" class="nav-link">Referanslar</a></li>
-                    <li><a href="/galeri" class="nav-link active">Galeri</a></li>
-                    <li><a href="/iletisim" class="nav-link">İletişim</a></li>
-                </ul>
-                <div class="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Include Common Header -->
+    <%- include('partials/header', { currentPage: 'gallery' }) %>
 
     <!-- Hero Section -->
     <section class="page-hero">
@@ -292,6 +328,7 @@
         </div>
     </footer>
 
+    <script src="/js/main.js"></script>
     <script>
         // Updated lightbox functions
         function showImage(imageSrc, title, location) {

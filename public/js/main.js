@@ -1,24 +1,55 @@
 // Selim Tesisat - Main JavaScript
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Main.js loaded, setting up mobile navigation...');
     
-    // Mobile Navigation Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
+    // Wait a bit for CSS to load
+    setTimeout(function() {
+        console.log('Setting up mobile navigation after delay...');
         
-        // Close menu when clicking on links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        console.log('Nav toggle element:', navToggle);
+        console.log('Nav menu element:', navMenu);
+        
+        if (navToggle) {
+            console.log('Nav toggle computed style:', window.getComputedStyle(navToggle).display);
+        }
+        
+        if (navToggle && navMenu) {
+            console.log('Setting up mobile menu click handler...');
+            
+            // Remove any existing event listeners
+            navToggle.replaceWith(navToggle.cloneNode(true));
+            const newNavToggle = document.querySelector('.nav-toggle');
+            
+            newNavToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Mobile menu toggle clicked!');
+                navMenu.classList.toggle('active');
+                newNavToggle.classList.toggle('active');
+                console.log('Menu active state:', navMenu.classList.contains('active'));
             });
-        });
-    }
+            
+            // Close menu when clicking on links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    console.log('Nav link clicked, closing menu...');
+                    navMenu.classList.remove('active');
+                    newNavToggle.classList.remove('active');
+                });
+            });
+        } else {
+            console.error('Mobile menu elements not found!');
+            console.log('Available elements:', {
+                navToggles: document.querySelectorAll('.nav-toggle').length,
+                navMenus: document.querySelectorAll('.nav-menu').length,
+                allNavElements: Array.from(document.querySelectorAll('[class*="nav"]')).map(el => el.className)
+            });
+        }
+    }, 100);
     
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

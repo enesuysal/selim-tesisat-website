@@ -85,7 +85,16 @@ app.get('/', async (req, res) => {
     }
     catch (error) {
         console.error('Error loading homepage:', error);
-        res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        try {
+            const [contactInfo, siteInfo] = await Promise.all([
+                models_1.ContactInfo.findOne(),
+                models_1.SiteInfo.findOne()
+            ]);
+            res.status(500).render('error', { contactInfo, siteInfo });
+        }
+        catch (renderError) {
+            res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        }
     }
 });
 app.get('/hizmetler', async (req, res) => {
@@ -111,7 +120,91 @@ app.get('/hizmetler', async (req, res) => {
     }
     catch (error) {
         console.error('Error loading services page:', error);
-        res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        try {
+            const [contactInfo, siteInfo] = await Promise.all([
+                models_1.ContactInfo.findOne(),
+                models_1.SiteInfo.findOne()
+            ]);
+            res.status(500).render('error', { contactInfo, siteInfo });
+        }
+        catch (renderError) {
+            res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        }
+    }
+});
+app.get('/galeri', async (req, res) => {
+    try {
+        const [gallery, galleryPage, contactInfo, siteInfo, services] = await Promise.all([
+            models_1.Gallery.find({ isActive: true }).sort({ featured: -1, order: 1, createdAt: -1 }),
+            models_1.GalleryPage.findOne(),
+            models_1.ContactInfo.findOne(),
+            models_1.SiteInfo.findOne(),
+            models_1.Service.find({ isActive: true }).sort({ order: 1 }).limit(6)
+        ]);
+        res.render('gallery-simple', {
+            gallery: gallery || [],
+            galleryPage,
+            contactInfo,
+            siteInfo,
+            services: services || []
+        });
+    }
+    catch (error) {
+        console.error('Error loading gallery page:', error);
+        try {
+            const [contactInfo, siteInfo] = await Promise.all([
+                models_1.ContactInfo.findOne(),
+                models_1.SiteInfo.findOne()
+            ]);
+            res.status(500).render('error', { contactInfo, siteInfo });
+        }
+        catch (renderError) {
+            res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        }
+    }
+});
+app.get('/referanslar', async (req, res) => {
+    try {
+        const [portfolio, portfolioPage, contactInfo, siteInfo, services] = await Promise.all([
+            models_1.Portfolio.find({ isActive: true }).sort({ featured: -1, order: 1, createdAt: -1 }),
+            models_1.PortfolioPage.findOne(),
+            models_1.ContactInfo.findOne(),
+            models_1.SiteInfo.findOne(),
+            models_1.Service.find({ isActive: true }).sort({ order: 1 }).limit(6)
+        ]);
+        res.render('portfolio', {
+            portfolio: portfolio || [],
+            portfolioPage,
+            contactInfo,
+            siteInfo,
+            services: services || []
+        });
+    }
+    catch (error) {
+        console.error('Error loading portfolio page:', error);
+        try {
+            const [contactInfo, siteInfo] = await Promise.all([
+                models_1.ContactInfo.findOne(),
+                models_1.SiteInfo.findOne()
+            ]);
+            res.status(500).render('error', { contactInfo, siteInfo });
+        }
+        catch (renderError) {
+            res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        }
+    }
+});
+app.get('/api/portfolio/:id', async (req, res) => {
+    try {
+        const project = await models_1.Portfolio.findById(req.params.id);
+        if (!project) {
+            return res.status(404).json({ error: 'Project not found' });
+        }
+        return res.json(project);
+    }
+    catch (error) {
+        console.error('Error fetching project:', error);
+        return res.status(500).json({ error: 'Internal server error' });
     }
 });
 app.get('/hakkimizda', async (req, res) => {
@@ -129,36 +222,78 @@ app.get('/hakkimizda', async (req, res) => {
     }
     catch (error) {
         console.error('Error loading about page:', error);
-        res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        try {
+            const [contactInfo, siteInfo] = await Promise.all([
+                models_1.ContactInfo.findOne(),
+                models_1.SiteInfo.findOne()
+            ]);
+            res.status(500).render('error', { contactInfo, siteInfo });
+        }
+        catch (renderError) {
+            res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        }
     }
 });
 app.get('/iletisim', async (req, res) => {
     try {
-        const [contactPage, contactInfo, siteInfo, services] = await Promise.all([
+        const [contactPage, contactInfo, siteInfo, services, servicesPage] = await Promise.all([
             models_1.ContactPage.findOne(),
             models_1.ContactInfo.findOne(),
             models_1.SiteInfo.findOne(),
-            models_1.Service.find({ isActive: true }).sort({ order: 1, createdAt: 1 })
+            models_1.Service.find({ isActive: true }).sort({ order: 1, createdAt: 1 }),
+            models_1.ServicesPage.findOne()
         ]);
         res.render('contact', {
             contactPage,
             contactInfo,
             siteInfo,
-            services: services || []
+            services: services || [],
+            servicesPage
         });
     }
     catch (error) {
         console.error('Error loading contact page:', error);
-        res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        try {
+            const [contactInfo, siteInfo] = await Promise.all([
+                models_1.ContactInfo.findOne(),
+                models_1.SiteInfo.findOne()
+            ]);
+            res.status(500).render('error', { contactInfo, siteInfo });
+        }
+        catch (renderError) {
+            res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+        }
     }
 });
-
-app.use((req, res) => {
-    res.status(404).sendFile(path_1.default.join(__dirname, '../public/404.html'));
+app.get('/admin', (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../public/admin.html'));
 });
-app.use((err, req, res, next) => {
+app.use(async (req, res) => {
+    try {
+        const [contactInfo, siteInfo] = await Promise.all([
+            models_1.ContactInfo.findOne(),
+            models_1.SiteInfo.findOne()
+        ]);
+        res.status(404).render('404', { contactInfo, siteInfo });
+    }
+    catch (error) {
+        console.error('Error rendering 404 page:', error);
+        res.status(404).sendFile(path_1.default.join(__dirname, '../public/404.html'));
+    }
+});
+app.use(async (err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+    try {
+        const [contactInfo, siteInfo] = await Promise.all([
+            models_1.ContactInfo.findOne(),
+            models_1.SiteInfo.findOne()
+        ]);
+        res.status(500).render('error', { contactInfo, siteInfo });
+    }
+    catch (renderError) {
+        console.error('Error rendering error page:', renderError);
+        res.status(500).sendFile(path_1.default.join(__dirname, '../public/error.html'));
+    }
 });
 app.listen(PORT, () => {
     console.log(`SELİM Tesisat website running on port ${PORT}`);
