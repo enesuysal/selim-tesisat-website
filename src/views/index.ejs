@@ -288,8 +288,8 @@
                 <h2 class="section-title"><%= whyChoose?.title || 'Neden Selim Tesisat?' %></h2>
             </div>
             <div class="features-grid">
-                <% if (whyChoose && whyChoose.features && whyChoose.features.length > 0) { %>
-                    <% whyChoose.features.forEach(feature => { %>
+                <% if (whyChoose && whyChoose.items && whyChoose.items.length > 0) { %>
+                    <% whyChoose.items.forEach(feature => { %>
                     <div class="feature-item">
                         <div class="feature-icon">
                             <i class="<%= feature.icon || 'icon-star' %>"></i>
