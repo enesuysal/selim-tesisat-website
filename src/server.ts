@@ -288,6 +288,41 @@ app.get('/iletisim', async (req, res) => {
   }
 });
 
+// English contact page route
+app.get('/contact', async (req, res) => {
+  try {
+    const [contactPage, contactInfo, siteInfo, services, servicesPage] = await Promise.all([
+      ContactPage.findOne(),
+      ContactInfo.findOne(),
+      SiteInfo.findOne(),
+      Service.find({ isActive: true }).sort({ order: 1, createdAt: 1 }),
+      ServicesPage.findOne()
+    ]);
+
+    res.render('contact', { 
+      contactPage,
+      contactInfo,
+      siteInfo,
+      services: services || [],
+      servicesPage
+    });
+  } catch (error) {
+    console.error('Error loading contact page:', error);
+    try {
+      const [contactInfo, siteInfo] = await Promise.all([
+        ContactInfo.findOne(),
+        SiteInfo.findOne()
+      ]);
+      res.status(500).render('error', { contactInfo, siteInfo });
+    } catch (renderError) {
+      res.status(500).sendFile(path.join(__dirname, '../public/error.html'));
+    }
+  }
+});
+
+// Contact form submission routes
+app.use('/contact', contactRouter);
+
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/admin.html'));
 });

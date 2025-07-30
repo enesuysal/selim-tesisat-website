@@ -369,3 +369,33 @@ const galleryPageSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 export const GalleryPage = mongoose.model('GalleryPage', galleryPageSchema);
+
+// Message Schema for Contact Form Submissions
+const messageSchema = new mongoose.Schema({
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true },
+  service: { type: String, required: true },
+  location: { type: String, required: true },
+  message: { type: String, required: true },
+  isUrgent: { type: Boolean, default: false },
+  status: { 
+    type: String, 
+    enum: ['new', 'read', 'in-progress', 'completed', 'closed'], 
+    default: 'new' 
+  },
+  notes: { type: String }, // Admin notes
+  respondedAt: { type: Date },
+  respondedBy: { type: String },
+  priority: { 
+    type: String, 
+    enum: ['low', 'medium', 'high', 'urgent'], 
+    default: 'medium' 
+  },
+  source: { type: String, default: 'website' }, // website, phone, email, etc.
+  ipAddress: { type: String },
+  userAgent: { type: String }
+}, { timestamps: true });
+
+export const Message = mongoose.model('Message', messageSchema);
