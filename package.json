@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc",
         "start": "node dist/server.js",
-        "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+        "dev": "ts-node-dev --respawn --transpile-only -r dotenv/config src/server.ts",
         "setup-db": "ts-node src/scripts/setup-db.ts",
         "lint": "eslint src/**/*.ts",
         "test": "jest"
@@ -27,6 +27,7 @@
         "@types/bcryptjs": "^2.4.6",
         "@types/ejs": "^3.1.5",
         "@types/mongoose": "^5.11.96",
+        "@types/node-telegram-bot-api": "^0.64.9",
         "bcryptjs": "^3.0.2",
         "compression": "^1.7.4",
         "cors": "^2.8.5",
@@ -38,6 +39,7 @@
         "helmet": "^7.0.0",
         "jsonwebtoken": "^9.0.2",
         "mongoose": "^8.16.5",
+        "node-telegram-bot-api": "^0.66.0",
         "nodemailer": "^6.9.3",
         "sitemap": "^7.1.1"
     },

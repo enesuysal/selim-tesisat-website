@@ -3,6 +3,7 @@ import { body, validationResult } from 'express-validator';
 import nodemailer from 'nodemailer';
 import rateLimit from 'express-rate-limit';
 import { Message } from '../models/index';
+import { telegramNotifier } from '../utils/telegram';
 
 const router = express.Router();
 
@@ -114,6 +115,20 @@ router.post('/submit', contactLimiter, contactValidation, async (req: import('ex
 
     const savedMessage = await newMessage.save();
 
+    // Send Telegram notification
+    const telegramSent = await telegramNotifier.sendContactFormMessage({
+      firstName,
+      lastName,
+      email,
+      phone,
+      service: service || 'Belirtilmemiş',
+      location,
+      message,
+      isUrgent: urgent || false,
+      messageId: savedMessage._id.toString(),
+      ipAddress
+    });
+
     // Try to send emails, but don't fail if email sending fails
     try {
       // Email content
@@ -178,7 +193,7 @@ router.post('/submit', contactLimiter, contactValidation, async (req: import('ex
 
     return res.status(200).json({
       success: true,
-      message: 'Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.',
+      message: `Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız.${telegramSent ? ' (Telegram bildirimi gönderildi)' : ''}`,
       messageId: savedMessage._id
     });
 
@@ -294,6 +309,23 @@ router.get('/info', (req, res) => {
       ]
     }
   });
+});
+
+// Test Telegram integration
+router.get('/test-telegram', async (req, res) => {
+  try {
+    const success = await telegramNotifier.sendTestMessage();
+    return res.json({
+      success,
+      message: success ? 'Telegram test mesajı gönderildi!' : 'Telegram yapılandırılmamış.'
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: 'Telegram test mesajı gönderilemedi.',
+      error: error instanceof Error ? error.message : 'Bilinmeyen hata'
+    });
+  }
 });
 
 export { router as contactRouter };
