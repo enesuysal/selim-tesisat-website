@@ -72,51 +72,6 @@
         .main-navigation .nav-link.active {
             color: #0ea5e9 !important;
         }
-        
-        .mobile-menu-toggle {
-            display: none !important;
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: flex !important;
-            }
-            
-            .site-logo {
-                height: 100px !important;
-            }
-            
-            .main-navigation .nav-menu {
-                position: fixed !important;
-                top: 80px !important;
-                left: -100% !important;
-                width: 100% !important;
-                height: calc(100vh - 80px) !important;
-                background: #ffffff !important;
-                flex-direction: column !important;
-                gap: 0 !important;
-                padding: 2rem 0 !important;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
-                transition: left 0.3s ease !important;
-                z-index: 999 !important;
-            }
-            
-            .main-navigation .nav-menu.active {
-                left: 0 !important;
-            }
-            
-            .main-navigation .nav-menu li {
-                width: 100% !important;
-                text-align: center !important;
-            }
-            
-            .main-navigation .nav-link {
-                display: block !important;
-                padding: 1rem 2rem !important;
-                font-size: 1.1rem !important;
-                border-bottom: 1px solid #e2e8f0 !important;
-            }
-        }
 
         .container {
             max-width: 1200px;
@@ -370,40 +325,7 @@
             border: 1px solid #fecaca;
         }
 
-        .nav-toggle {
-            display: none;
-        }
-
         @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0,0,0,0.1);
-                padding: 2rem 0;
-                z-index: 1000;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .site-header .site-logo {
-                height: 100px !important;
-            }
-            
-            .nav-menu a {
-                color: #333 !important;
-                padding: 1rem 0;
-                display: block;
-                border-bottom: 1px solid #eee;
-            }
-
             .hero-section h1 {
                 font-size: 2rem;
             }
@@ -420,16 +342,6 @@
             .areas-grid {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
-        }
-        
-        /* Override for common header - ensure logo is consistent */
-        .site-header .site-logo {
-            height: 120px !important;
-            width: auto !important;
-            padding: 8px !important;
-            border-radius: 8px !important;
-            background: #fff !important;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
         }
         
         /* Hide old header styles that might conflict */
@@ -552,7 +464,7 @@
                         <select id="service" name="service" style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 8px;">
                             <option value=""><%= contactPage?.serviceSelectDefault || 'Hizmet seçin...' %></option>
                             <% services?.forEach(service => { %>
-                                <option value="<%= service.name %>"><%= service.name %></option>
+                                <option value="<%= service.title %>"><%= service.title %></option>
                             <% }) %>
                         </select>
                     </div>
@@ -687,38 +599,7 @@
 
         // Wait for DOM to be ready
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Contact page DOM loaded, setting up mobile navigation...');
-            
-            // Mobile Navigation Toggle - using the correct selector from common header
-            const navToggle = document.querySelector('.mobile-menu-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            console.log('Contact page - Nav toggle element:', navToggle);
-            console.log('Contact page - Nav menu element:', navMenu);
-            
-            if (navToggle && navMenu) {
-                console.log('Setting up mobile menu click handler...');
-                navToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Mobile menu toggle clicked!');
-                    navMenu.classList.toggle('active');
-                    navToggle.classList.toggle('active');
-                    console.log('Menu active state:', navMenu.classList.contains('active'));
-                });
-                
-                // Close menu when clicking on links
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        console.log('Nav link clicked, closing menu...');
-                        navMenu.classList.remove('active');
-                        navToggle.classList.remove('active');
-                    });
-                });
-            } else {
-                console.error('Mobile menu elements not found!');
-                console.log('Available nav elements:', document.querySelectorAll('nav *'));
-            }
+            console.log('Contact page DOM loaded');
         });
 
         // Smooth scrolling for anchor links
